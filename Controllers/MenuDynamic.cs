@@ -359,6 +359,8 @@ namespace RestaurantMVC.Controllers
                 }
                 else
                 {
+
+
                     var Finditem = listshop.Find(x => x.ItemIds.Contains(ItemIds));
                     int oldqty = Finditem.Qty;
                     int newqty = 0;
