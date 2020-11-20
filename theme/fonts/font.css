@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'films.DENMARK';
+    src: local('films.DENMARK'),url('./films.DENMARK.ttf') format('truetype');
+}
+
+.danFont {
+    font-family: 'films.DENMARK' !important;
+} 

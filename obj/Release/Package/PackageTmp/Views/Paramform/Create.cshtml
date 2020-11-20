@@ -1,0 +1,166 @@
+﻿@model RestaurantMVC.Models.ParamModel
+@{
+    Layout = "~/Views/Shared/_Layoutadm.cshtml";
+}
+
+
+
+<script type="text/javascript">
+
+</script>
+
+<div class="plcholder-cn">
+    <div class="content-wrapper">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Parameter Form</h3>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="errormessage" style="display:none">
+                <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+            </div>
+            @if (ViewBag.Message != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                </div>
+            }
+            @if (ViewBag.MessageErr != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                </div>
+            }
+        </div>
+        <div class="pd-form-area">
+
+            <div class="content-box" id="traddpanelView">
+                <div class="m-form">
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @using (Html.BeginForm("Create", "Paramform", FormMethod.Post))
+                                    {
+                                        @*@Html.AntiForgeryToken()*@
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                        @*<div class="form-group">
+                                                @Html.HiddenFor(m => m.about.ID)
+
+                                            </div>
+
+                                            @if (@Model.about.ID == 0)
+                                            {
+                                                @Html.HiddenFor(m => m.about.IsInserted, new { Value = "I" })
+                                            }
+                                            else
+                                            {
+                                                @Html.HiddenFor(m => m.about.IsInserted, new { Value = "U" })
+                                            }*@
+                                        <div class="card-body">
+                                            <div>
+                                                @*@Html.HiddenFor(m => m.category.IsInserted)*@
+                                                @*<input type="hidden" asp-for="@Model.category.Operated_By" value="Ashish" />
+                                                    <input type="hidden" asp-for="@Model.category.IsInserted" value="I" />*@
+                                            </div>
+                                            <div class="form-group row">
+
+                                                <label class="col-sm-2 col-form-label">Address</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.Address, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Contact NO</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.Contact_NO, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.Contact_NO, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Email_ID </label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.Email_ID, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.Email_ID, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Location</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.location, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.location, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row">
+
+                                                <label class="col-sm-2 col-form-label">OpenHour_lbl1  </label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.OpenHour_lbl1, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.OpenHour_lbl1, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">OpenHour_txt1</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.OpenHour_txt1, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.OpenHour_txt1, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">OpenHour_lbl2</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.OpenHour_lbl2, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.OpenHour_lbl2, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">OpenHour_txt2</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.OpenHour_txt2, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.OpenHour_txt2, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">OpenHour_lbl3</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.OpenHour_lbl3, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.OpenHour_lbl3, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">OpenHour_txt3</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.OpenHour_txt3, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.OpenHour_txt3, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">ToEmail ID</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.param.To_Email_ID, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.param.To_Email_ID, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- /.card-body -->
+                                        <div class="card-footer text-center">
+                                            <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("About", "Create")'" />
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /.content-wrapper -->
+
+
+    </div>
+</div>

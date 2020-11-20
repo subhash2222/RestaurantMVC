@@ -1,0 +1,18 @@
+﻿<i18n>
+  <locale locale="en_US">
+    <page-title>Reepay Checkout</page-title>
+    <embedded>Embedded</embedded>
+    <modal>Modal</modal>
+    <window>Window</window>
+    <language>Language</language>
+    <testing-cards>Testing Cards</testing-cards>
+  </locale>
+  <locale locale="da_DK">
+    <page-title>Reepay Checkout</page-title>
+    <embedded>Embedded</embedded>
+    <modal>Modal</modal>
+    <window>Window</window>
+    <language>Language</language>
+    <testing-cards>Testing Cards</testing-cards>
+  </locale>
+</i18n>

@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MenItem10_7" xml:space="preserve">
+    <value>Allo Muttor</value>
+  </data>
+  <data name="MenuDec10_1" xml:space="preserve">
+    <value>Hjemmelavet ost med smør, cremet sauce, rosiner, kokos, honning, toppet med nøddemix</value>
+  </data>
+  <data name="MenuDec10_2" xml:space="preserve">
+    <value>Blandede linser kogt med spidskommen, ingefær og hvidløg.</value>
+  </data>
+  <data name="MenuDec10_3" xml:space="preserve">
+    <value>Hjemmelavet ost tilberedt med spinat og kryddéiiei.</value>
+  </data>
+  <data name="MenuDec10_4" xml:space="preserve">
+    <value>Frisk blandet grønsager med karry og tomatsauce.</value>
+  </data>
+  <data name="MenuDec10_5" xml:space="preserve">
+    <value>Kartofler med let karrysouce, ingefær og hvidløg.</value>
+  </data>
+  <data name="MenuDec10_6" xml:space="preserve">
+    <value>Kartofler, spinat og krydderier.</value>
+  </data>
+  <data name="MenuDec10_7" xml:space="preserve">
+    <value>Kartofler ærter, karrysauce og krydderier.</value>
+  </data>
+  <data name="MenuDec11_1" xml:space="preserve">
+    <value>Peberfrugt, kylling bagt i tandoor, tomatsauce, chilli, ingefær, hvidløg.</value>
+  </data>
+  <data name="MenuDec11_1a" xml:space="preserve">
+    <value>peberfrugt, lam, tomatsauce,chilli,ingefær, hvidløg.</value>
+  </data>
+  <data name="MenuDec11_2" xml:space="preserve">
+    <value>Peberfrugt,hjemmelavet ost, chilli, ingefær,hvidlog</value>
+  </data>
+  <data name="MenuDec11_3" xml:space="preserve">
+    <value>Fisk I mild karrysauce.</value>
+  </data>
+  <data name="MenuDec11_4" xml:space="preserve">
+    <value>Karry, creme, mandler, cashewnøddler, koriander.</value>
+  </data>
+  <data name="MenuDec11_5" xml:space="preserve">
+    <value>Lamb Korma Creamy Lam med Karrysauce,Cremet, Nøddemix, Ingefær,Smør og Koriander.</value>
+  </data>
+  <data name="MenuDec11_5a" xml:space="preserve">
+    <value>Karrysauce, creme, mandler, cashewnødder.</value>
+  </data>
+  <data name="MenuDec11_7" xml:space="preserve">
+    <value>Creamy kyllingefilet og karrysauce, Toppes med nøddemix.</value>
+  </data>
+  <data name="MenuDec12_1" xml:space="preserve">
+    <value>Frisk Indisk brød bagt i Tandoori</value>
+  </data>
+  <data name="MenuDec12_2" xml:space="preserve">
+    <value>Frisk Indisk brød med hvidløg bagt i Tandoori.</value>
+  </data>
+  <data name="MenuDec12_3" xml:space="preserve">
+    <value>Frisk Indisk brød med smør bagt i Tandoori.</value>
+  </data>
+  <data name="MenuDec12_4" xml:space="preserve">
+    <value>Traditionel Indisk brød</value>
+  </data>
+  <data name="MenuDec13_1" xml:space="preserve">
+    <value>Dej bolle i sirup, klassisk varm indisk dessert,toppes med nøddemix</value>
+  </data>
+  <data name="MenuDec14_9" xml:space="preserve">
+    <value>1 or 2L</value>
+  </data>
+  <data name="MenuDec15_1" xml:space="preserve">
+    <value>Mango, Mint Chutney, Pickles, Ketchup eller Mayo</value>
+  </data>
+  <data name="MenuDec16_1" xml:space="preserve">
+    <value>Kikærter med karrysauce, 2stk. naanbrod, pickles chutney,eddike og rødløg</value>
+  </data>
+  <data name="MenuDec16_2" xml:space="preserve">
+    <value>Kikærter med karrysauce, 2stk. Friture Indisk hvedemelsbrød,pickles chutney, eddike og rødløg.</value>
+  </data>
+  <data name="MenuDec16_3" xml:space="preserve">
+    <value>Kikærter med karrysauce, 2stk. friture hvedemelsbrød,pickles chutney, eddike og rødløg</value>
+  </data>
+  <data name="MenuDec17_1" xml:space="preserve">
+    <value>Butter Chicken, Lam, Okse, King Prawn, Creamy Chicken, Lamb Korma Creamy</value>
+  </data>
+  <data name="MenuDec18_5" xml:space="preserve">
+    <value>Stegte og let krydrede ris med grønne ærter(Til børn)</value>
+  </data>
+  <data name="MenuDec18_5a" xml:space="preserve">
+    <value>Mix Vegetar, basmati ris, turmeric og koriander</value>
+  </data>
+  <data name="MenuDec18_6" xml:space="preserve">
+    <value>Basmati Ris</value>
+  </data>
+  <data name="MenuDec18_Raita" xml:space="preserve">
+    <value>Inkl. Boondi Raita</value>
+  </data>
+  <data name="MenuDec1_1a" xml:space="preserve">
+    <value>Hjemmelavede lækre indiske chips flerfarvede.</value>
+  </data>
+  <data name="MenuDec1_2" xml:space="preserve">
+    <value>Tynde Sprede Snacks</value>
+  </data>
+  <data name="MenuDec1_3" xml:space="preserve">
+    <value>Samosa Med Kartofler,Aerter Stegt,I Krydret Dej</value>
+  </data>
+  <data name="MenuDec1_4" xml:space="preserve">
+    <value>Samosa Med Kyllinge,Aerter Stegt,I Krydret Dej</value>
+  </data>
+  <data name="MenuDec1_5" xml:space="preserve">
+    <value>Løgringe Stegt I Krydret Dej</value>
+  </data>
+  <data name="MenuDec1_5a" xml:space="preserve">
+    <value>Kartofler stegt i krydret dej.</value>
+  </data>
+  <data name="MenuDec1_6" xml:space="preserve">
+    <value>Kyllinge Stegt I Krydret Dej</value>
+  </data>
+  <data name="MenuDec1_7" xml:space="preserve">
+    <value>Kongerejer Stegt I Velkrydret Dej</value>
+  </data>
+  <data name="MenuDec1_7a" xml:space="preserve">
+    <value>Fisk stegt i krydret dej.</value>
+  </data>
+  <data name="MenuDec1_8" xml:space="preserve">
+    <value>Kyllingelår marineret I yoghurt og tandoori i Krydderier, serveret med salat</value>
+  </data>
+  <data name="MenuDec2_1" xml:space="preserve">
+    <value>Mild Karrysuppe Med Kylling, Serveret Med 1stk Naanbrod</value>
+  </data>
+  <data name="MenuDec2_2" xml:space="preserve">
+    <value>Vegetar Suppe Med Linser, Karry Sauce og Krydderler Serveret Med 1stk Naanbrod</value>
+  </data>
+  <data name="MenuDec2_3" xml:space="preserve">
+    <value>Tomat Suppe Blandet med Milde Krydderier Serveret Med 1stk Naanbrod</value>
+  </data>
+  <data name="MenuDec3_1" xml:space="preserve">
+    <value>Agurk,Salat,Cherry Tomat, Rødløg, Peberfrugt, Solslkkekerner, Gulerødder, Chilliløg Kylling med lime Bagt Tandoori</value>
+  </data>
+  <data name="MenuDec3_2" xml:space="preserve">
+    <value>Agurk,Salat, Cherry Tomat, Rødløg, Peberfrugt, Solslkkekerner, Gulerød, Oliven, Chilliløg og  lime med hjemmelavet hytteost</value>
+  </data>
+  <data name="MenuDec4_1" xml:space="preserve">
+    <value>Yoghurt med Agurt, Tomater, Kartofler med Friske Korianderblade</value>
+  </data>
+  <data name="MenuDec4_2" xml:space="preserve">
+    <value>Indisk Yoghurt med Granulerede Kikaerter</value>
+  </data>
+  <data name="MenuDec4_3" xml:space="preserve">
+    <value>Indisk stegt Basmatirls, Peberfrugt , Mandler , Rosiner, Kokos og Indiske krydderler</value>
+  </data>
+  <data name="MenuDec6_1" xml:space="preserve">
+    <value>Mild Butter Chicken eller Creamy chicken med ris</value>
+  </data>
+  <data name="MenuDec6_2" xml:space="preserve">
+    <value>Kyllingenuggets Servet med Pommesfrites og let Salat</value>
+  </data>
+  <data name="MenuDec6_3" xml:space="preserve">
+    <value>1.stk fiskefilet med pommesfrities.</value>
+  </data>
+  <data name="MenuDec9_1" xml:space="preserve">
+    <value>Retterspinat med friske krydderier.</value>
+  </data>
+  <data name="MenuItem10" xml:space="preserve">
+    <value>Vegetar - Vegetarian</value>
+  </data>
+  <data name="MenuItem10_1" xml:space="preserve">
+    <value>Butter Paneer</value>
+  </data>
+  <data name="MenuItem10_2" xml:space="preserve">
+    <value>Mix Daal</value>
+  </data>
+  <data name="MenuItem10_3" xml:space="preserve">
+    <value>Palak (Spinat) Panner</value>
+  </data>
+  <data name="MenuItem10_4" xml:space="preserve">
+    <value>Mix Veg</value>
+  </data>
+  <data name="MenuItem10_5" xml:space="preserve">
+    <value>Aloofry Spicy</value>
+  </data>
+  <data name="MenuItem10_6" xml:space="preserve">
+    <value>Spinat Kartofler</value>
+  </data>
+  <data name="MenuItem11" xml:space="preserve">
+    <value>The North Indian Special Dish</value>
+  </data>
+  <data name="MenuItem11_1" xml:space="preserve">
+    <value>Chicken Chilli</value>
+  </data>
+  <data name="MenuItem11_1a" xml:space="preserve">
+    <value>Lum Chilli</value>
+  </data>
+  <data name="MenuItem11_2" xml:space="preserve">
+    <value>Ost chili Veg</value>
+  </data>
+  <data name="MenuItem11_3" xml:space="preserve">
+    <value>Fisk Karry</value>
+  </data>
+  <data name="MenuItem11_4" xml:space="preserve">
+    <value>Lam Rogan Josh</value>
+  </data>
+  <data name="MenuItem11_5" xml:space="preserve">
+    <value>Lamb Korma Creamy</value>
+  </data>
+  <data name="MenuItem11_5a" xml:space="preserve">
+    <value>Chicken Korma Creamy</value>
+  </data>
+  <data name="MenuItem11_7" xml:space="preserve">
+    <value>Creamy Kyllingelår</value>
+  </data>
+  <data name="MenuItem12" xml:space="preserve">
+    <value>Naan Brød</value>
+  </data>
+  <data name="MenuItem12_1" xml:space="preserve">
+    <value>Plain Naan</value>
+  </data>
+  <data name="MenuItem12_2" xml:space="preserve">
+    <value>Garlic Naan</value>
+  </data>
+  <data name="MenuItem12_3" xml:space="preserve">
+    <value>Butter Naan</value>
+  </data>
+  <data name="MenuItem12_4" xml:space="preserve">
+    <value>Chapati 2stk.</value>
+  </data>
+  <data name="MenuItem13" xml:space="preserve">
+    <value>Dessert</value>
+  </data>
+  <data name="MenuItem13_1" xml:space="preserve">
+    <value>Gulab Jamun</value>
+  </data>
+  <data name="MenuItem14" xml:space="preserve">
+    <value>Drikke varer</value>
+  </data>
+  <data name="MenuItem14_1" xml:space="preserve">
+    <value>Mango Juice</value>
+  </data>
+  <data name="MenuItem14_2" xml:space="preserve">
+    <value>Mango Lassi</value>
+  </data>
+  <data name="MenuItem14_3" xml:space="preserve">
+    <value>Aqua D´or Natural eller citrus</value>
+  </data>
+  <data name="MenuItem14_4" xml:space="preserve">
+    <value>King Fisher (Indisk øl)</value>
+  </data>
+  <data name="MenuItem14_5" xml:space="preserve">
+    <value>Cobra (Indisk øl)</value>
+  </data>
+  <data name="MenuItem14_6" xml:space="preserve">
+    <value>Husets Rødvin/Hvidvin</value>
+  </data>
+  <data name="MenuItem14_7" xml:space="preserve">
+    <value>Alkoholfri Øl</value>
+  </data>
+  <data name="MenuItem14_8" xml:space="preserve">
+    <value>Ginger Beer</value>
+  </data>
+  <data name="MenuItem14_9" xml:space="preserve">
+    <value>Cola, Zero, Fanta, Faxe Kondi, Scweppes lemon</value>
+  </data>
+  <data name="MenuItem15" xml:space="preserve">
+    <value>Tilbehør</value>
+  </data>
+  <data name="MenuItem15_1" xml:space="preserve">
+    <value>Chutney Frit valg</value>
+  </data>
+  <data name="MenuItem16" xml:space="preserve">
+    <value>Special Punjabi Thali Frit valg</value>
+  </data>
+  <data name="MenuItem16_1" xml:space="preserve">
+    <value>Cholle Naan</value>
+  </data>
+  <data name="MenuItem16_2" xml:space="preserve">
+    <value>Cholle Poori</value>
+  </data>
+  <data name="MenuItem16_3" xml:space="preserve">
+    <value>Cholle Bhathura</value>
+  </data>
+  <data name="MenuItem17" xml:space="preserve">
+    <value>Laktosefrie retter</value>
+  </data>
+  <data name="MenuItem17_1" xml:space="preserve">
+    <value>Disse retter kan fås laktosefri med ris</value>
+  </data>
+  <data name="MenuItem18" xml:space="preserve">
+    <value>Alle Biryani</value>
+  </data>
+  <data name="MenuItem18_1" xml:space="preserve">
+    <value>Vegtar Biryani</value>
+  </data>
+  <data name="MenuItem18_2" xml:space="preserve">
+    <value>Kylling Biryani</value>
+  </data>
+  <data name="MenuItem18_3" xml:space="preserve">
+    <value>Lamb Biyani</value>
+  </data>
+  <data name="MenuItem18_4" xml:space="preserve">
+    <value>King Prawn Biryani</value>
+  </data>
+  <data name="MenuItem18_5" xml:space="preserve">
+    <value>North India Pulao</value>
+  </data>
+  <data name="MenuItem18_5a" xml:space="preserve">
+    <value>Veg Pulao</value>
+  </data>
+  <data name="MenuItem18_6" xml:space="preserve">
+    <value>Ris</value>
+  </data>
+  <data name="MenuItem1_1" xml:space="preserve">
+    <value>Forretter Med Sauce</value>
+  </data>
+  <data name="MenuItem1_1a" xml:space="preserve">
+    <value>Chips</value>
+  </data>
+  <data name="MenuItem1_2" xml:space="preserve">
+    <value>Papadum</value>
+  </data>
+  <data name="MenuItem1_3" xml:space="preserve">
+    <value>Veg Samosa</value>
+  </data>
+  <data name="MenuItem1_4" xml:space="preserve">
+    <value>Kyllinge Samosa</value>
+  </data>
+  <data name="MenuItem1_5" xml:space="preserve">
+    <value>Løg Bhaji(Pakora)</value>
+  </data>
+  <data name="MenuItem1_5a" xml:space="preserve">
+    <value>Kartofler (Pakora)</value>
+  </data>
+  <data name="MenuItem1_6" xml:space="preserve">
+    <value>Kyllinge Pakora</value>
+  </data>
+  <data name="MenuItem1_7" xml:space="preserve">
+    <value>King Prawn Pakora</value>
+  </data>
+  <data name="MenuItem1_7a" xml:space="preserve">
+    <value>Fish Pakora</value>
+  </data>
+  <data name="MenuItem1_8" xml:space="preserve">
+    <value>Tandoori Chicken</value>
+  </data>
+  <data name="MenuItem2" xml:space="preserve">
+    <value>Supper</value>
+  </data>
+  <data name="MenuItem2_1" xml:space="preserve">
+    <value>Chicken Suppe</value>
+  </data>
+  <data name="MenuItem2_2" xml:space="preserve">
+    <value>Daal Suppe(Linser)</value>
+  </data>
+  <data name="MenuItem2_3" xml:space="preserve">
+    <value>TomatSuppe</value>
+  </data>
+  <data name="MenuItem3" xml:space="preserve">
+    <value>Salater</value>
+  </data>
+  <data name="MenuItem3_1" xml:space="preserve">
+    <value>The North Indian Salat</value>
+  </data>
+  <data name="MenuItem3_2" xml:space="preserve">
+    <value>Veg Cheese Salat</value>
+  </data>
+  <data name="MenuItem4" xml:space="preserve">
+    <value>Yoghurt</value>
+  </data>
+  <data name="MenuItem4_1" xml:space="preserve">
+    <value>Raita (Yoghurt)</value>
+  </data>
+  <data name="MenuItem4_2" xml:space="preserve">
+    <value>Boondi Raita</value>
+  </data>
+  <data name="MenuItem4_3" xml:space="preserve">
+    <value>Biryani inklusive Boondi raita</value>
+  </data>
+  <data name="MenuItem5" xml:space="preserve">
+    <value>Butter Retter</value>
+  </data>
+  <data name="MenuItem5_1" xml:space="preserve">
+    <value>Butter Kylling</value>
+  </data>
+  <data name="MenuItem5_2" xml:space="preserve">
+    <value>Butter Okse</value>
+  </data>
+  <data name="MenuItem5_3" xml:space="preserve">
+    <value>Butter Lam</value>
+  </data>
+  <data name="MenuItem5_4" xml:space="preserve">
+    <value>Butter King Prawn</value>
+  </data>
+  <data name="MenuItem6_1" xml:space="preserve">
+    <value>Børnemenu</value>
+  </data>
+  <data name="MenuItem6_2" xml:space="preserve">
+    <value>Nuggets og Frites</value>
+  </data>
+  <data name="MenuItem6_3" xml:space="preserve">
+    <value>Fiskefilet og Frites</value>
+  </data>
+  <data name="MenuItem7" xml:space="preserve">
+    <value>Karry Retter</value>
+  </data>
+  <data name="MenuItem7_1" xml:space="preserve">
+    <value>Chicken Karry</value>
+  </data>
+  <data name="MenuItem7_2" xml:space="preserve">
+    <value>Okse Karry</value>
+  </data>
+  <data name="MenuItem7_3" xml:space="preserve">
+    <value>Lamb Karry</value>
+  </data>
+  <data name="MenuItem7_4" xml:space="preserve">
+    <value>King Prawn</value>
+  </data>
+  <data name="MenuItem7_4a" xml:space="preserve">
+    <value>Fish Karry</value>
+  </data>
+  <data name="MenuItem8" xml:space="preserve">
+    <value>Tikka Masala Retter</value>
+  </data>
+  <data name="MenuItem8_1" xml:space="preserve">
+    <value>Chicken Tikka Masala</value>
+  </data>
+  <data name="MenuItem8_2" xml:space="preserve">
+    <value>Okse Tikka Masala</value>
+  </data>
+  <data name="MenuItem8_3" xml:space="preserve">
+    <value>Lamb Tikka Masala</value>
+  </data>
+  <data name="MenuItem8_4" xml:space="preserve">
+    <value>King Prawn Tikka Masala</value>
+  </data>
+  <data name="MenuItem9" xml:space="preserve">
+    <value>Spinat (Palak) Retter</value>
+  </data>
+  <data name="MenuItem9_1" xml:space="preserve">
+    <value>Spinat (Palak) kylling</value>
+  </data>
+  <data name="MenuItem9_2" xml:space="preserve">
+    <value>Spinat Okse</value>
+  </data>
+  <data name="MenuItem9_3" xml:space="preserve">
+    <value>Spinat (Palak) lamb</value>
+  </data>
+  <data name="MenuItem9_4" xml:space="preserve">
+    <value>Spinat (Palak) King Prawn</value>
+  </data>
+  <data name="MenuQuantity" xml:space="preserve">
+    <value>Antal</value>
+  </data>
+</root>

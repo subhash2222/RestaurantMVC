@@ -1,0 +1,176 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+<!--Home Index -->
+<div>
+    <section id="mu-slider">
+        <div class="mu-slider-area">
+            <!-- Top slider -->
+            <div class="mu-top-slider">
+                <!-- Top slider single slide -->
+                <div class="mu-top-slider-single">
+                    <img src="~/Content/assets/img/slider/1.jpeg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="mu-top-slider-content">
+                        <span class="mu-slider-small-title">@RestaurantMVC.Resources.Home.Slider1</span>
+                        <h2 class="mu-slider-title">@RestaurantMVC.Resources.Home.Slider1_1</h2>
+                        <a href='@Url.Action("Index", "Reservation")' class="mu-readmore-btn">@RestaurantMVC.Resources.Home.SliderBtn</a>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+                <!-- Top slider single slide -->
+                <div class="mu-top-slider-single">
+                    <img src="~/Content/assets/img/slider/2.jpeg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="mu-top-slider-content">
+                        <span class="mu-slider-small-title">@RestaurantMVC.Resources.Home.Slider2</span>
+                        <h2 class="mu-slider-title">@RestaurantMVC.Resources.Home.Slider2_2</h2>
+
+                        <a href='@Url.Action("Index", "Reservation")' class="mu-readmore-btn">@RestaurantMVC.Resources.Home.SliderBtn</a>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+                <!-- Top slider single slide -->
+                <div class="mu-top-slider-single">
+                    <img src="~/Content/assets/img/slider/3.jpeg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="mu-top-slider-content">
+                        <span class="mu-slider-small-title">@RestaurantMVC.Resources.Home.Slider3</span>
+                        <h2 class="mu-slider-title">@RestaurantMVC.Resources.Home.Slider3_1 <br />@RestaurantMVC.Resources.Home.Slider3_2</h2>
+                        <a href='@Url.Action("Index", "Reservation")' class="mu-readmore-btn">@RestaurantMVC.Resources.Home.SliderBtn</a>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+
+            </div>
+        </div>
+    </section>
+    <section id="mu-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-about-us-area">
+                        <div class="mu-title">
+                            <span class="mu-subtitle">@RestaurantMVC.Resources.Home.AboutUs</span>
+                            <h2><span>@RestaurantMVC.Resources.Home.MenuAbout</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mu-about-us-left">
+                                    <img src="~/Content/assets/img/about-us.png" alt="img">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mu-about-us-right">
+                                    <p>
+                                        <asp:Literal ID="ltrabt" runat="server"></asp:Literal>
+                                    </p>
+                                    <p>@RestaurantMVC.Resources.Home.Abt1</p>
+                                    <p>@RestaurantMVC.Resources.Home.Abt2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @*<section id="mu-counter">
+            <div class="mu-counter-overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-counter-area">
+                                <ul class="mu-counter-nav">
+                                    <li class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="mu-single-counter">
+                                            <span>Fresh</span>
+                                            <h3><span class="counter-value" data-count="150">0</span><sup>+</sup></h3>
+                                            <p>Breakfast Items</p>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="mu-single-counter">
+                                            <span>Delicious</span>
+                                            <h3><span class="counter-value" data-count="60">0</span><sup>+</sup></h3>
+                                            <p>Lunch Items</p>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="mu-single-counter">
+                                            <span>Hot</span>
+                                            <h3><span class="counter-value" data-count="45">0</span><sup>+</sup></h3>
+                                            <p>Coffee Items</p>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="mu-single-counter">
+                                            <span>Satisfied</span>
+                                            <h3><span class="counter-value" data-count="6560">0</span><sup>+</sup></h3>
+                                            <p>Customers</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+
+    @*<section id="mu-client-testimonial">
+            <div class="mu-overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-client-testimonial-area">
+
+                                <div class="mu-title">
+                                    <span class="mu-subtitle">@RestaurantMVC.Resources.Home.Testimo</span>
+                                    <h2>@RestaurantMVC.Resources.Home.Testimo1</h2>
+                                </div>
+                                <div class="mu-testimonial-content">
+                                    <ul class="mu-testimonial-slider">
+                                        <li>
+                                            <div class="mu-testimonial-single">
+                                                <div class="mu-testimonial-info">
+                                                </div>
+                                                <div class="mu-testimonial-bio">
+                                                    <p>- David Muller</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="mu-testimonial-single">
+                                                <div class="mu-testimonial-info">
+                                                </div>
+                                                <div class="mu-testimonial-bio">
+                                                    <p>- David Muller</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="mu-testimonial-single">
+                                                <div class="mu-testimonial-info">
+                                                </div>
+                                                <div class="mu-testimonial-bio">
+                                                    <p>- David Muller</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+</div>

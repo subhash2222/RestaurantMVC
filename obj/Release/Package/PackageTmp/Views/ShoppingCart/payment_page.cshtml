@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "payment_page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://checkout.reepay.com/assets/demo/common/es6-promise.min.js"></script>
+<script src="https://checkout.reepay.com/assets/demo/common/es6-promise-auto.min.js"></script>
+<script src="~/Scripts/demo.js?v=0.4.25"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://checkout.reepay.com/checkout.js"></script>
+<link href="~/Content/assets/css/loader.css?v=0.3" rel="stylesheet" />
+
+<h2>payment_page</h2>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        // alert('test')
+        //openWindow();
+    });
+
+</script>
+
+<div class="loader-mn">
+    <div class="row">
+        <div class="col-sm-3 text-center">
+        </div>
+        <div class="col-sm-6 text-center ">
+            <div class="loader4" style=" margin-top:240px"></div>
+        </div>
+        <div class="col-sm-3 text-center">
+        </div>
+    </div>
+</div>
+
+<div style="display:none">
+    <div id="totalamount">
+        @ViewBag.total
+    </div>
+    <div id="orderno">
+        @ViewBag.orderno
+    </div>
+    @*<div id="customername">
+            @ViewBag.customername
+        </div>*@
+    <div id="rp-btn-window1" class="btn btn-success btn-lg btn-block" style="display:none">
+        <div translate="window">
+            Submit
+        </div>
+    </div>
+</div>
+
+

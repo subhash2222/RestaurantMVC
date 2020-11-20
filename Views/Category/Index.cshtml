@@ -1,0 +1,241 @@
+﻿@model RestaurantMVC.Models.CategoryModel
+@{
+    Layout = "~/Views/Shared/_Layoutadm.cshtml";
+}
+
+<script type="text/javascript">
+    function Validate() {
+        $('#lblerrormessage').text("");
+        var catgname = $("#txtcatgname").val();
+        
+        if (catgname == null || catgname == "") {
+            document.getElementById('errormessage').style.display = "block";
+            $('#lblerrormessage').text("Please enter Category Name.");
+            document.getElementById('txtcatgname').focus();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+<div class="plcholder-cn">
+    <div class="content-wrapper">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Category Master</h3>
+                </div>
+                <div class="p-2">
+                    @*<a class="btn btn-success float-right" href="@Url.Action("Create", "Category")"><span>Add New</span></a>*@
+                    @Html.ActionLink("Add New", "Create", "Category", null, new { @class = "btn btn-success float-right pt-2" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="errormessage" style="display:none">
+                <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+            </div>
+            @if (ViewBag.Message != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                </div>
+            }
+            @if (ViewBag.MessageErr != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                </div>
+            }
+        </div>
+        <div class="pd-form-area">
+            @if (Model.AddNew == "new")
+            {
+                <div class="content-box" id="traddpanelView">
+                    <div class="m-form">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("Create", "Category", FormMethod.Post))
+                                        {
+                                            @*@Html.AntiForgeryToken()*@
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="card-body">
+                                                <div>
+                                                    @*@Html.HiddenFor(m => m.category.IsInserted)*@
+                                                    @*<input type="hidden" asp-for="@Model.category.Operated_By" value="Ashish" />
+                                                        <input type="hidden" asp-for="@Model.category.IsInserted" value="I" />*@
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Category Name</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.category.category_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.category.category_Name, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <label class="col-sm-2 col-form-label">Status</label>
+                                                    <div class="col-sm-4">
+                                                        @*@Html.DropDownListFor(m => m.category.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), "Please select", new { @id = "ddlstatus" })*@
+                                                        @Html.DropDownListFor(m => m.category.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), new { @id = "ddlstatus", @class = "form-control" })
+                                                        @Html.ValidationMessageFor(m => m.category.status, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Display Seq No</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.category.display_Seq_No, new { htmlAttributes = new { Value = "", @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.category.display_Seq_No, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer text-center">
+                                                <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("Category", "Create")'" />
+                                                @Html.ActionLink("Close", "Index", new object { }, new { @class = "btn btn-primary" })
+                                                @*<a asp-action="Index" method="post" onclick="GetIndex('@Url.Action("")')" class="btn btn-primary">Close</a>*@
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+            @if (Model.Status == "edit")
+            {
+                <div class="content-box" id="traddpanelEdit">
+                    <div class="m-form">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+                                        {
+                                            @*@Html.AntiForgeryToken()*@
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="card-body">
+                                                <div>
+                                                    @Html.HiddenFor(m => m.category.category_ID)
+                                                    @*<input type="hidden" asp-for="@Model.category.Operated_By" value="Ashish" />
+                                                        <input type="hidden" asp-for="@Model.category.IsInserted" value="I" />*@
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Category Name</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.category.category_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.category.category_Name, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <label class="col-sm-2 col-form-label">Status</label>
+                                                    <div class="col-sm-4">
+                                                        @*@Html.DropDownListFor(m => m.category.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), "Please select", new { @id = "ddlstatus" })*@
+                                                        @Html.DropDownListFor(m => m.category.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), new { @id = "ddlstatus", @class = "form-control" })
+                                                        @Html.ValidationMessageFor(m => m.category.status, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Display Seq No</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.category.display_Seq_No, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.category.display_Seq_No, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer text-center">
+                                                <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("Category", "Edit")'" />
+                                                @Html.ActionLink("Close", "Index", new object { }, new { @class = "btn btn-primary" })
+                                                @*<a asp-action="Index" method="post" onclick="GetIndex('@Url.Action("")')" class="btn btn-primary">Close</a>*@
+                                            </div>
+                                        }
+                                        @*<form class="form-horizontal" asp-action="Edit" asp-controller="Category" onsubmit="return Validate()">
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <div class="card-body">
+                                                    <div>
+                                                        <input type="hidden" asp-for="@Model.category.category_ID" />
+                                                        <input type="hidden" asp-for="@Model.category.Operated_By" value="Ashish" />
+                                                        <input type="hidden" asp-for="@Model.category.IsInserted" value="U" />
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Category Name</label>
+                                                        <div class="col-sm-4">
+                                                            <input asp-for="@Model.category.category_Name" class="form-control" id="txtcatgname" />
+                                                        </div>
+                                                        <label class="col-sm-2 col-form-label">Status</label>
+                                                        <div class="col-sm-4">
+                                                            <select asp-for="@Model.category.status" class="form-control"
+                                                                    asp-items="@(new SelectList(ViewBag.statuslist,"Lov_Code","Lov_Desc"))"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label">Display Seq No</label>
+                                                        <div class="col-sm-4">
+                                                            <input asp-for="@Model.category.display_Seq_No" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <input type="submit" id="save" class="btn btn-primary" value="Update" />
+                                                    <a asp-action="Index" method="post" onclick="GetIndex('@Url.Action("")')" class="btn btn-primary">Close</a>
+                                                </div>
+                                            </form>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+        <!-- /.content-wrapper -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="admtbl" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category Name</th>
+                                        <th>Status</th>
+                                        <th>Display Seq NO</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ListCategory)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.category_Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.statusdesc)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.display_Seq_No)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink(" ", "Edit", "Category", new { pcatgid = @item.category_ID }, new { @class = "far fa-edit pr-3", title = "Edit" })
+                                                @Html.ActionLink(" ", "Delete", "Category", new { pcatgid = @item.category_ID }, new { @class = "far fa-trash-alt", title = "Delete", onclick = "return confirm('Are you sure to delete this record?');" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+</div>

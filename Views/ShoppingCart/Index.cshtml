@@ -1,0 +1,681 @@
+﻿@model RestaurantMVC.Models.ShoppingCartDetail
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+
+    .backgroundcolorred {
+        border: 1px solid red !important;
+    }
+    #mu-header {
+        border-bottom: 0px solid #ddd !important;
+        /*   z-index: 0 !important;*/
+    }
+
+    /* Partial Shopping Cart */
+
+    .special-offer-container {
+        background-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 0)
+    }
+
+    .defaultBorder {
+        border-color: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultText--dark {
+        color: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultText {
+        color: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultButtons--maxlight {
+        background: rgba(245, 245, 245, 1) !important
+    }
+
+    .defaultButtons--light {
+        background: rgba(166, 166, 166, 1) !important
+    }
+
+    .defaultButtons--dark {
+        background: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultButtons {
+        background: rgba(0, 0, 0, 1) !important;
+        color: rgba(255, 255, 255, 1) !important
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<link href="~/Content/assets/css/menu.css?v=2.22" rel="stylesheet" />
+<link href="~/Content/assets/css/font-awesome.css?v=1.10" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.panel-collapse').on('show.bs.collapse', function () {
+            $(this).siblings('.panel-heading').addClass('active');
+        });
+
+        $('.panel-collapse').on('hide.bs.collapse', function () {
+            $(this).siblings('.panel-heading').removeClass('active');
+        });
+
+    });
+
+    $("body").on("click", "#btnClear", function () {
+        $('#cart-column').addClass('cart__background');
+        $('.cart').addClass('cart--expanded');
+    });
+
+    $("body").on("click", "#divclose", function () {
+        $('#cart-column').removeClass('cart__background');
+        $('#Cart').removeClass('cart--expanded');;
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        document.getElementById("amenu").style.display = "none";
+
+        //var Deliverytipe = sessionStorage.getItem("deliverytypemenu");
+        var Deliverytipe = sessionStorage.getItem("deliverytypemenu") == null ? "Pickup" : sessionStorage.getItem("deliverytypemenu");
+
+        if (Deliverytipe == "Pickup") {
+            $('input:radio[name=ritem][value=Pickup]').attr('checked', true);
+            visiblepickup();
+        } else {
+            $('input:radio[name=ritem][value=Delivery]').attr('checked', true);
+            visibledelivery();
+        }
+
+        $(document).ready(function () {
+            $('input[type=radio][name=ritem]').change(function () {
+                if (this.value == "Pickup") {
+                    visiblepickup();
+
+                }
+                else if (this.value == "Delivery") {
+                    visibledelivery();
+                }
+            })
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function AddItemtocart_pluse(itemlbl, pricelbl, qtylbl, itemid, types) {
+        //debugger;        
+        var itemname = itemlbl;
+        var qty = qtylbl;
+        var id = itemid;
+        var price = pricelbl;
+        var radioValue = $("input[name='ritem']:checked").val();
+        //var delvtime = $("#ddldelvtime").val();
+        var myObj = { menuitem: itemname, itemqty: qty, itemprice: price, itemid: id ,types: types, deliverytype: radioValue};
+        //alert(JSON.stringify(myObj));
+           $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddItem", "Menu")',
+                data:
+                    {
+                    data: JSON.stringify(myObj),
+               },
+               success: function (result) {
+                    if (result.msgType == "S") {                        
+                        // Commented on 1-oct-2020 not require to load the header bcz remove shopping cart count menu
+                        //var serviceUrl = "/header";
+                        //    var request = $.post(serviceUrl);
+                        //    request.done(function (data) {
+                        //        $("#mu-header").html(data);
+                        //    })
+                        //    .fail(function () {
+                        //    });
+
+                        var serviceUrl = "/Menu/Cart_load";
+                        var request = $.post(serviceUrl);
+                        request.done(function (data) {
+                            $("#partaildiv").html('');
+                            $("#partaildiv").html(data);
+                            document.getElementById("amenu").style.display = "none";
+                        })
+                            .fail(function () {
+                            });
+                    } else {
+                    }
+                },
+                error: function () {
+                    //alert("Contact System Administrator");
+                }
+            });
+            return false;
+    }
+
+    //function alertme() {
+    //        Swal.fire({
+    //            position: 'top-end',
+    //            icon: 'success',
+    //            title: 'Item Added Successfully',
+    //            showConfirmButton: false,
+    //            timer: 1500
+    //        })
+    //}
+</script>
+
+<link href="~/Content/assets/css/cart_view.css?v=2.1" rel="stylesheet" />
+
+<section id="Menu" class="menu-container">
+    <div class="defaultButtons menu__overlay"></div>
+    <div class="menu__overlay menu__overlay--light"></div>
+    <div class="menu-page">
+        <div id="Startcontentpgbody">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        @*<div id="dvcheckout" runat="server">
+                            <div class="container">*@
+                        <div class="form-group">
+                            <div id="dvcod" runat="server">
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="form-check form-check-inline col-md-3">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="COD" checked>
+                                        <label class="form-check-label" for="inlineRadio1">
+                                            COD
+                                            <img src="~/Content/assets/img/COD.jpg" style="width:150px;height: 66px;" />
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inlinec col-md-3" style="display:none">
+                                        @*<div class="form-check form-check-inlinec col-md-3">*@
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Payment">
+                                        <label class="form-check-label" for="inlineRadio2">
+                                            Payment
+                                            <img src="~/Content/assets/img/payment.jpg" style="width:150px;" />
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="dvdelivery" runat="server" style="display: none">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    @Html.TextBoxFor(item => Model.customerinfoDelivery.FirstName, htmlAttributes: new { @class = "form-control input-sm firstname", @placeholder = "First Name", @id = "txtfnamed" })
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    @Html.TextBoxFor(item => Model.customerinfoDelivery.LastName, htmlAttributes: new { @class = "form-control input-sm lastname", @placeholder = "Last Name", @id = "txtsnamed" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoDelivery.AddressLine1, htmlAttributes: new { @class = "form-control input-sm stline1", @placeholder = "Street Line1", @id = "txtadr1d" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoDelivery.AddressLine2, htmlAttributes: new { @class = "form-control input-sm stline2", @placeholder = "Street Line2", @id = "txtadr2d" })
+                                            @*<asp:TextBox ID="txtadd2" runat="server" placeholder="Street Line2" CssClass="form-control input-sm"></asp:TextBox>*@
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoDelivery.MobileNo, htmlAttributes: new { @class = "form-control input-sm mobileno", @placeholder = "Mobile No", @id = "txtmobiled" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoDelivery.EmailId, htmlAttributes: new { @class = "form-control input-sm emailid", @placeholder = "Email Id", @id = "txtemaild" })
+                                        </div>           
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoDelivery.Comments, htmlAttributes: new { @class = "form-control input-sm", @placeholder = "Special Instructions for order", @id = "txtcommentd" })
+                                        </div>
+                                        <div class="form-group">
+
+                                            @if (Model.displayModel.IsRestaurantOpen == "Y")
+                                            {
+                                                <input type="button" class="btn btn-success btn-lg btn-block" id="btnSaveDelivery" onclick="SaveDelivery()" value="Submit" />
+                                                
+                                            }
+                                            else
+                                            {
+                                                <input type="button" class="btn btn-success btn-lg btn-block" id="btnSaveDelivery" disabled="disabled" value="Submit" />
+                                            }
+
+                                            @*@Html.ActionLink(" ", "SaveDelivery", "ShoppingCart", new { @class = "btn btn-success btn-lg btn-block", title = "Delivery" })*@
+                                            @*<asp:Button ID="btndelevery" runat="server" Text="Submit" CssClass="btn btn-success btn-lg btn-block" OnClick="btndelevery_Click" />*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="dvpickup" runat="server" style="display: none">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-2">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    @Html.TextBoxFor(item => Model.customerinfoPickup.FirstName, htmlAttributes: new { @class = "form-control input-sm firstnamepic", @placeholder = "First Name", @id = "txtfnamep" })
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    @Html.TextBoxFor(item => Model.customerinfoPickup.LastName, htmlAttributes: new { @class = "form-control input-sm lastnamepic", @placeholder = "Last Name", @id = "txtlnamep" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoPickup.MobileNo, htmlAttributes: new { @class = "form-control input-sm mobilenopic", @placeholder = "Mobile No", @id = "txtmobilep" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoPickup.EmailId, htmlAttributes: new { @class = "form-control input-sm emailidpic", @placeholder = "Email Id", @id = "txtemailp" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(item => Model.customerinfoPickup.Comments, htmlAttributes: new { @class = "form-control input-sm commentpic", @placeholder = "Special Instructions for order", @id = "txtcommentp" })
+                                        </div>
+                                        <div class="form-group">
+
+                                            @if (Model.displayModel.IsRestaurantOpen == "Y")
+                                            {
+                                                <input type="button" class="btn btn-success btn-lg btn-block" id="btnsavepickup" onclick="Savepickup()" value="Submit" />
+
+                                            }
+                                            else
+                                            {
+                                                <input type="button" class="btn btn-success btn-lg btn-block" id="btnsavepickup" onclick="Savepickup()" disabled="disabled" value="Submit" />
+                                            }
+
+                                            @*<asp:Button ID="btnsavepickup" runat="server" Text="Submit" CssClass="btn btn-success btn-lg btn-block" OnClick="btnsavepickup_Click1" />*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*</div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-column" id="cart-column">
+            @Html.Partial("~/Views/Menu/_cart_partail.cshtml")
+        </div>
+    </div>
+</section>
+<script src="~/Content/assets/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+@*<script type="text/javascript" src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>*@
+@*<script src="~/Content/assets/bootstrap/js/bootstrap-datetimepicker.js"></script>*@
+@*<script src="~/Content/assets/js/jquery.min.js"></script>*@
+<script src="~/theme/plugins/daterangepicker/moment.min.js"></script>
+<script src="~/theme/plugins/moment/moment-with-locales.js"></script>
+
+<script type="text/javascript">
+
+     $(document).ready(function () {
+
+            $('input[type=radio][name=inlineRadioOptions]').change(function () {
+
+
+            if (this.value == "COD") {
+
+            }
+            else if (this.value == "Payment") {
+
+            }
+        })
+     });
+
+    function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            //if (e.style.display == 'block')
+            //    e.style.display = 'none';
+            //else
+        e.style.display = 'block';
+        }
+
+        function toggle_visibilitydelvbtn(id, idhide) {
+            var e = document.getElementById(id);
+            var ehide = document.getElementById(idhide);            
+            e.style.display = 'block';
+            ehide.style.display = 'none';
+            if (ehide.style.display == 'block')
+                ehide.style.display = 'none';
+
+            if (e.style.display == 'none')
+                e.style.display = 'block';
+        }
+
+        function visibledelivery() {
+            document.getElementById("dvdelivery").style.display = "block";
+            document.getElementById("dvpickup").style.display = "none";
+
+             var serviceUrl = "/ShoppingCart/ModifyShoppingcart_partial?deliverytype=Delivery";
+            var request = $.post(serviceUrl);
+            request.done(function (data) {
+                $("#dvcart").html(data);
+
+                //document.getElementById("divdelivery").style.display = "block";
+
+
+            })
+                .fail(function () {
+                });
+    }
+
+    function visiblepickup() {
+            document.getElementById("dvpickup").style.display = "block";
+        document.getElementById("dvdelivery").style.display = "none";
+
+        var serviceUrl = "/ShoppingCart/ModifyShoppingcart_partial?deliverytype=Pickup";
+        var request = $.post(serviceUrl);
+        request.done(function (data) {
+            $("#dvcart").html(data);
+            //document.getElementById("divdelivery").style.display = "none";
+
+        })
+            .fail(function () {
+            });
+        }
+
+    function visiblecod() {
+                document.getElementById("dvcod").style.display = "block";
+    }
+
+    function alertdelivery(msg) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+                footer: ''
+            })
+            document.getElementById("dvcheckout").style.display = "block";
+            document.getElementById("dvdelivery").style.display = "block";
+            document.getElementById("dvcod").style.display = "block";
+            document.getElementById("dvpickup").style.display = "none";
+    }
+
+    function alertpickup(msg) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+                footer: ''
+            })
+            document.getElementById("dvcheckout").style.display = "block";
+            document.getElementById("dvdelivery").style.display = "none";
+            document.getElementById("dvcod").style.display = "block";
+            document.getElementById("dvpickup").style.display = "block";
+    }
+
+    function Ordersuccessdelivery() {
+            Swal.fire(
+                'Your order has been placed successfully',
+                '',
+                'success'
+            )
+            document.getElementById("dvcheckout").style.display = "block";
+            document.getElementById("dvcod").style.display = "block";
+            document.getElementById("dvpickup").style.display = "none";
+    }
+
+    function Ordersuccesspickup() {
+        Swal.fire(
+            'Your order has been placed successfully',
+            '',
+            'success'
+        )
+        document.getElementById("dvcheckout").style.display = "block";
+        document.getElementById("dvcod").style.display = "block";
+        document.getElementById("dvdelivery").style.display = "none";
+    }
+
+    function IsEmail(email) {        
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!regex.test(email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function SaveDelivery() {
+        // debugger;        
+        var FirstName = $("#txtfnamed").val()|| '';
+        var LastName = $("#txtsnamed").val()|| '';
+        var AddressLine1 = $("#txtadr1d").val()|| '';
+        var AddressLine2 = $("#txtadr2d").val()|| '';
+        var MobileNo = $("#txtmobiled").val()|| '';
+        var EmailId = $("#txtemaild").val()|| '';
+
+        var isvalid = true;
+
+        if (FirstName == '' || FirstName == undefined || FirstName == null) {
+            $(".firstname").addClass("backgroundcolorred");
+            isvalid = false;
+        }
+        else {
+                $(".firstname").removeClass("backgroundcolorred");
+            }
+
+        if (LastName == '' || LastName == undefined || LastName == null) {
+            $(".lastname").addClass("backgroundcolorred");
+            isvalid = false;
+        }
+        else {
+                $(".lastname").removeClass("backgroundcolorred");
+            }
+
+        if (AddressLine1 == '' || AddressLine1 == undefined || AddressLine1 == null) {
+            $(".stline1").addClass("backgroundcolorred");
+            isvalid = false;
+        }
+        else {
+                $(".stline1").removeClass("backgroundcolorred");
+            }
+        if (MobileNo == '' || MobileNo == undefined || MobileNo == null) {
+            $(".mobileno").addClass("backgroundcolorred");
+            isvalid = false;
+        }
+        else {
+                $(".mobileno").removeClass("backgroundcolorred");
+            }
+
+        if (EmailId == '' || EmailId == undefined || EmailId == null) {
+
+        }
+        else {
+            if (!IsEmail(EmailId)) {                
+                $(".emailid").addClass("backgroundcolorred");
+                isvalid = false;
+            }
+            else {
+                $(".emailid").removeClass("backgroundcolorred");
+            }
+        }
+
+        if (!isvalid) {
+            return;
+        }
+        //else {
+        //    $(".mobileno").removeClass("backgroundcolorred");
+        //}
+
+        //if (EmailId == '' || EmailId == undefined || EmailId == null) {
+        //    $(".emailid").addClass("backgroundcolorred");
+        //    return;
+        //}
+        //else {
+        //    $(".emailid").removeClass("backgroundcolorred");
+        //}
+
+        var radioValue = $("input[name='inlineRadioOptions']:checked").val();
+        var myObj = { FirstName: $("#txtfnamed").val(), LastName: $("#txtsnamed").val(), AddressLine1: $("#txtadr1d").val(), AddressLine2: $("#txtadr2d").val(), MobileNo: $("#txtmobiled").val(), EmailId: $("#txtemaild").val(), Time: $("#ddldelvtime").val(), Paymentmode: radioValue,Comments: $("#txtcommentd").val()};
+         $.ajax({
+                type: "POST",
+                url: '@Url.Action("SaveDelivery", "ShoppingCart")',
+                data:
+                {
+                data: JSON.stringify(myObj),
+                },
+             success: function (result) {
+                  if (result.msgType == "S") {
+                      // Commented on 1-oct-2020 not require to load the header bcz remove shopping cart count menu
+                     // var serviceUrl = "/header";
+                     //var request = $.post(serviceUrl);
+                     //request.done(function (data) {
+                     //    $("#mu-header").html(data);
+                     //})
+                     //    .fail(function () {
+                     //    });
+
+                      ShowTimerOrderMessage();
+                      //Ordersuccessdelivery();
+                 }
+                 else if (result.msgType == "O") {                     
+                      var url = "/ShoppingCart/payment_page" + '?price=' + parseFloat(result.price).toFixed(2) + '&orderno=' + result.orderno;
+                     window.location.href = url;
+                 }                 
+                },
+                error: function () {
+                //alert("error");
+                }
+                });
+    }
+
+    function Savepickup() {
+        //debugger;        
+        var FirstName = $("#txtfnamed").val() || '';
+        var FirstName = $("#txtfnamep").val() || '';
+        var LastName = $("#txtlnamep").val() || '';
+        var MobileNo = $("#txtmobilep").val() || '';
+        var EmailId = $("#txtemailp").val() || '';
+
+        var isvalid = true;
+
+        if (FirstName == '' || FirstName == undefined || FirstName == null) {
+            $(".firstnamepic").addClass("backgroundcolorred");
+            isvalid = false;
+        }
+        else {
+                $(".firstnamepic").removeClass("backgroundcolorred");
+            }
+
+        if (LastName == '' || LastName == undefined || LastName == null) {
+            $(".lastnamepic").addClass("backgroundcolorred");
+        isvalid = false;
+        }
+        else {
+                $(".lastnamepic").removeClass("backgroundcolorred");
+            }
+
+        if (MobileNo == '' || MobileNo == undefined || MobileNo == null) {
+            $(".mobilenopic").addClass("backgroundcolorred");
+        isvalid = false;
+        }
+        else {
+                $(".mobilenopic").removeClass("backgroundcolorred");
+        }
+
+        if (EmailId == '' || EmailId == undefined || EmailId == null) {
+
+        }
+        else {
+            if (!IsEmail(EmailId)) {                
+                $(".emailidpic").addClass("backgroundcolorred");
+                isvalid = false;
+            }
+            else {
+                $(".emailidpic").removeClass("backgroundcolorred");
+            }
+        }
+
+        if (!isvalid) {
+            return;
+        }
+
+        var radioValue = $("input[name='inlineRadioOptions']:checked").val();
+        
+        var myObj = { FirstName: $("#txtfnamep").val(), LastName: $("#txtlnamep").val(), MobileNo: $("#txtmobilep").val(), EmailId: $("#txtemailp").val(), Time: $("#ddldelvtime").val(), Paymentmode: radioValue,Comments: $("#txtcommentp").val()};        
+        //alert(JSON.stringify(myObj));
+         $.ajax({
+                type: "POST",
+                url: '@Url.Action("Savepickup", "ShoppingCart")',
+                data:
+                {
+                data: JSON.stringify(myObj),
+                },
+             success: function (result) {
+                 //debugger;
+                 //alert(result);
+                 //alert(result.msgType);
+                 if (result.msgType == "S") {
+                     // Commented on 1-oct-2020 not require to load the header bcz remove shopping cart count menu
+                     //var serviceUrl = "/header";
+                     //var request = $.post(serviceUrl);
+                     //request.done(function (data) {
+                     //    $("#mu-header").html(data);
+                     //})
+                     //    .fail(function () {
+                     //    });                     
+                     ShowTimerOrderMessage();
+                     //Ordersuccesspickup();
+                     //var url = "/Home/Index";
+                     //window.location.href = url;
+                 }
+                 else if (result.msgType == "O") {                     
+                     var url = "/ShoppingCart/payment_page" + '?price=' + parseFloat(result.price).toFixed(2) + '&orderno=' + result.orderno;
+                     window.location.href = url;
+                 }
+                },
+                error: function () {
+                //alert("Contact System Administrator");
+                }
+                });
+    }
+
+
+    function ShowTimerOrderMessage() {
+       let timerInterval
+Swal.fire({
+    title: 'Your order has been placed successfully',
+  //html: 'I will close in <b></b> milliseconds.',
+    html: 'It will automatically redirect to Home Page',
+  icon: 'success',
+  timer: 3000,
+  timerProgressBar: true,
+  onBeforeOpen: () => {
+    Swal.showLoading()
+    timerInterval = setInterval(() => {
+      const content = Swal.getContent()
+      if (content) {
+        const b = content.querySelector('b')
+        if (b) {
+          b.textContent = Swal.getTimerLeft()
+        }
+      }
+    }, 1000)
+  },
+    onClose: () => {
+        clearInterval(timerInterval)
+        var url = "/Home/Index";
+        window.location.href = url;
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+
+
+    }
+
+</script>

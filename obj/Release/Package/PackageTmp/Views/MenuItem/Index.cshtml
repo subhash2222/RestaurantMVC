@@ -1,0 +1,244 @@
+﻿@model RestaurantMVC.Models.MenuItemModel
+@{
+    Layout = "~/Views/Shared/_Layoutadm.cshtml";
+}
+
+ <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+ <script type="text/javascript">
+     $(document).ready(function ()
+     {
+         $("#categoryid").change(function ()
+         {
+            $.get("/MenuItem/ItemCombo", { categoryid: $("#categoryid").val() }, function (data)
+            {                
+                $("#itemid").empty();                
+                $.each(data, function (index, row)
+                {
+                    $("#itemid").append("<option value='" + row.Item_ID + " '>" + row.Item_Name + "</option>")
+                });
+            });
+         })
+     });     
+ </script>
+<div class="plcholder-cn">
+    <div class="content-wrapper">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">MenuItem</h3>
+                </div>
+               
+                <div class="p-2">
+                    <a class="btn btn-link float-left" href="@Url.Action("Index", "MenuAdm")?pmenuid=@ViewBag.pmenuid1"><span>Back To List</span></a>
+
+                    @*<a class="btn btn-success float-right" href="@Url.Action("Create", "MenuItem")?@ViewBag.menuid"><span>Add New</span></a>*@
+                    <a class="btn btn-success float-right" href="@Url.Action("Create", "MenuItem")?pmenuid=@TempData["ID1"]"><span>Add New Items</span></a>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="errormessage" style="display:none">
+                <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+            </div>
+            @if (ViewBag.Message != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                </div>
+            }
+            @if (ViewBag.MessageErr != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                </div>
+            }
+        </div>
+        <div class="pd-form-area">
+            @if (Model.AddNew == "new")
+            {
+                <div class="content-box" id="traddpanelView">
+                    <div class="m-form">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("Create", "MenuItem", FormMethod.Post))
+                                        {
+
+                                            @*@Html.AntiForgeryToken()*@
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="card-body">
+                                            <div>
+
+                                                @Html.HiddenFor(m => m.menuItem.Menu_ID, new { @ViewBag.Menu_ID })
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Category Name</label>
+                                                <div class="col-sm-4">
+
+                                                    @Html.DropDownListFor(m => m.menuItem.Category_ID, new SelectList(ViewBag.Categorylist, "Category_ID", "Category_Name"), new { @id = "categoryid", Value = "Category_ID", @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.menuItem.Category_ID, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Item Name</label>
+                                                <div class="col-sm-4">
+                                                    @Html.DropDownListFor(m => m.menuItem.Item_ID, new SelectList(" "), new { @id = "itemid", Value = "Item_ID", @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.menuItem.Item_ID, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            @*<div class="container">
+                                                <div class="row">
+                                                    <div class='col-sm-6'>
+                                                        <div class="form-group">
+                                                            <div class='input-group date' id='datetimepicker3'>                                                                
+                                                                <span class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-time"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        $(function () {
+                                                            $('#datetimepicker3').datetimepicker({
+                                                                format: 'LT'
+                                                            });
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>*@
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Display Images</label>
+                                                <div class="col-sm-4">
+                                                    @Html.CheckBoxFor(m => m.menuItem.Display_Image, new { htmlAttributes = new { Value = "", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.menuItem.Display_Image, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <!-- /.card-body -->
+                                    <div class="card-footer text-center">
+                                        <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("MenuItem", "Create")?pmenuid=@TempData["ID1"]'" />                                                                            
+                                        <a class="btn btn-primary" href="@Url.Action("Index", "MenuItem")?pmenuid=@TempData["ID9"]"><span>Close</span></a>
+                                    </div>
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @if (Model.Status == "edit")
+            {
+                <div class="content-box" id="traddpanelEdit">
+                    <div class="m-form">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("Edit", "MenuItem", FormMethod.Post))
+                                        {
+                                            @*@Html.AntiForgeryToken()*@
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="card-body">
+                                            <div>
+                                                @Html.HiddenFor(m => m.menuItem.Menu_ID, new { @ViewBag.Menu_ID })
+                                                @*@Html.HiddenFor(m => m.menuItem.Category_ID, new { @ViewBag.Menu_ID })
+                                                @Html.HiddenFor(m => m.menuItem.Item_ID, new { @ViewBag.Menu_ID })*@
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Category Name</label>
+                                                <div class="col-sm-4">
+
+                                                    @Html.DropDownListFor(m => m.menuItem.Category_ID, new SelectList(ViewBag.Categorylist, "Category_ID", "Category_Name"), new { @id = "categoryid",  @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.menuItem.Category_ID, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <label class="col-sm-2 col-form-label">Item Name</label>
+                                                <div class="col-sm-4">
+
+                                                    @Html.DropDownListFor(m => m.menuItem.Item_ID, new SelectList(" "), new { @id = "itemid",  @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.menuItem.Item_ID, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Display Images</label>
+                                                <div class="col-sm-4">
+                                                    @Html.CheckBoxFor(m => m.menuItem.Display_Image, new { htmlAttributes = new { Value = "", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.menuItem.Display_Image, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <!-- /.card-body -->
+                                    <div class="card-footer text-center">
+                                        <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("MenuItem", "Edit" )'" />
+
+                                        <a class="btn btn-primary" class="visible"  href="@Url.Action("", "MenuItem" )?pmenuid=@TempData["ID9"] " ><span>Close</span></a>
+                                        @*<a asp-action="Index" method="post" onclick="GetIndex('@Url.Action("")')" class="btn btn-primary">Close</a>*@
+                                    </div>
+                                        }
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <!-- /.content-wrapper -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="admtbl" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Item Name</th>
+                                        <th>Display Images</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ListMenuItem)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Category_Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Item_Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Display_Image)
+                                            </td>
+
+
+                                            <td>
+                                                @Html.ActionLink(" ", "Edit", "MenuItem", new { pmenuid = @item.Menu_ID , cid = @item.Category_ID , itemid = @item.Item_ID   }, new { @class = "far fa-edit pr-3", title = "Edit" })
+                                                @Html.ActionLink(" ", "Delete", "MenuItem", new { pmenuid = @item.Menu_ID ,cid = item.Category_ID , itemid = item.Item_ID  }, new { @ViewBag.pmenuid1, @class = "far fa-trash-alt", title = "Delete", onclick = "return confirm('Are you sure to delete this record?');" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+</div>

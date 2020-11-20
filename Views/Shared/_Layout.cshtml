@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - North Indian Restaurant</title>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+    <link rel="shortcut icon" href="~/Content/assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- Font awesome -->
+    <link href="~/Content/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/slick.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/bootstrap-datepicker.css">
+    <!-- Gallery Lightbox -->
+    <link href="~/Content/assets/css/magnific-popup.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/assets/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="~/Content/assets/style.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <!-- Prata for body  -->
+    <link href='https://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css'>
+    <!-- Tangerine for small title -->
+    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+    <!-- Open Sans for title -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <script src="~/Content/assets/sweetalert2/sweetalert2.all.js"></script>
+    <link href="~/Content/MasterPageStyle.css" rel="stylesheet" />
+    @*<script src="assets/sweetalert2/sweetalert2.all.js"></script>*@
+
+    @*<style>
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                padding: 12px 16px;
+                z-index: 1;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        </style>*@
+    <style>
+
+        .fa-stack[data-count]:after {
+            position: absolute;
+            right: 0%;
+            top: 0%;
+            content: attr(data-count);
+            font-size: 30%;
+            padding: .6em;
+            border-radius: 999px;
+            line-height: .75em;
+            color: white;
+            color: orange;
+            text-align: center;
+            min-width: 2em;
+            font-weight: bold;
+            background: white;
+            border-style: solid;
+        }
+
+        .fa-circle {
+            color: white;
+        }
+
+        .red-cart {
+            color: black;
+            background: white;
+            font-size: 1.3em !important;
+        }
+
+        .Message--animate {
+            display: none;
+            margin-top: -35px;
+        }
+
+        .pshow {
+            display: block;
+        }
+
+        .Message-sticky {
+            background-color: #b9a020;
+            color: #fff;
+            display: block;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .Message--animate {
+            display: none;
+            margin-top: -35px;
+        }
+
+        .Message-sticky {
+            background-color: #b9a020;
+            color: #fff;
+            display: block;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .a_cookie {
+            font-size: 0.9em;
+            margin: 0.5em 0.75em;
+            padding: 0 0.5em;
+            display: inline-block;
+        }
+
+        .marketstrip {
+            color: white !important;
+        }
+
+        .fa_Cookie {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 50px;
+            width: 50px;
+            display: inline-block;
+            margin: 0;
+            padding: 0.75em;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <a id="scrollToTop1"></a>
+    <div>
+        @{
+            Html.RenderAction("DisplayModelList", "Header");
+        }
+        @*@Html.Partial("_Header")*@
+    </div>
+
+
+
+
+    @*<div id="Startcontentpgbody">*@ @*use in other than home page*@
+    @*<div class="container body-content">*@
+    <!-- Start Map section -->
+    @*<section id="mu-map">
+            Place Google Map URL
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d66836.08225113216!2d12.405433586335247!3d55.85202741121553!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46524981511f5137%3A0xa0f4c06f7c4e5966!2sThe%20My%20Dream%20Restaurant%20and%20Take%20Away!5e0!3m2!1sen!2sdk!4v1576095286884!5m2!1sen!2sdk" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </section>*@
+    <!-- End Map section -->
+    @RenderBody()
+    <hr />
+    <footer id="mu-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-footer-area">
+                        <div class="mu-footer-social">
+                            <!--Place Facebook link-->
+                            <a href="https://www.facebook.com/northindianrestaurantandtakeaway/" target="_blank"><span class="fa fa-facebook"></span></a>
+                            <a href="#"><span class="fa fa-twitter"></span></a>
+                            <a href="#"><span class="fa fa-google-plus"></span></a>
+                            <a href="#"><span class="fa fa-linkedin"></span></a>
+                            <a href="#"><span class="fa fa-youtube"></span></a>
+                        </div>
+                        <div class="mu-footer-copyright">
+                            <p>&copy; Copyright <a rel="nofollow" href="#">The North Indian Restaurant and Takeaway</a>. All right reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @*</div>*@
+
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Content/assets/js/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Content/assets/js/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Content/assets/js/simple-animated-counter.js?v=0.39"></script>
+    <!-- Gallery Lightbox -->
+    <script type="text/javascript" src="~/Content/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Date Picker -->
+    <script type="text/javascript" src="~/Content/assets/js/bootstrap-datepicker.js"></script>
+    <!-- Ajax contact form  -->
+    <script type="text/javascript" src="~/Content/assets/js/app.js"></script>
+
+    <!-- Custom js -->
+    <script src="~/Content/assets/js/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var btn = $('#scrollToTop1');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+        });
+    </script>
+
+
+    @*<script type="text/javascript">
+            $(document).ready(function () {
+                window.location.href = 'http://thenorthindian.dk/';
+            });
+        </script>*@
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
+</body>
+</html>

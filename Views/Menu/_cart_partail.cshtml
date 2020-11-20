@@ -1,0 +1,332 @@
+﻿@model RestaurantMVC.Models.ShoppingCartDetail
+
+
+<style>
+    .fal, .far {
+        font-family: "Font Awesome 5 Pro";
+    }
+</style>
+<style>
+    .radio-item input[type=radio]:checked + label {
+        color: orange;
+    }
+
+    .radio-item {
+        display: inline-block;
+        position: relative;
+        padding: 0 6px;
+        margin: 10px 0 0;
+    }
+
+    .deliverycharge {
+        display: none !important;
+    }
+
+    .deliverychargeshow {
+        display: -webkit-inline-box;
+    }
+
+    .radio-item input[type='radio'] {
+        display: none;
+    }
+
+    .radio-item label {
+        color: #666;
+        font-weight: normal;
+    }
+
+        .radio-item label:before {
+            content: " ";
+            display: inline-block;
+            position: relative;
+            top: 5px;
+            margin: 0 5px 0 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 11px;
+            border: 2px solid orange;
+            background-color: transparent;
+        }
+
+    .radio-item input[type=radio]:checked + label:after {
+        border-radius: 11px;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 9px;
+        left: 10px;
+        content: " ";
+        display: block;
+        background: orange;
+    }
+</style>
+
+
+
+<link href="~/Content/assets/css/cart_view.css?v=0.39" rel="stylesheet" />
+<div id="partaildiv">
+    <div id="Cart" class="cart ">
+        <span class="js-close-cart cart__icon--close-container" id="divclose">
+            <i class="fa fa-times-circle" style="font-size:32px"></i>
+        </span>
+        <div class="cart--scroll" id="cart--scroll">
+            <div class="cart__collection-btn-container">
+                <div class="cart__collection">
+                    <div class="defaultButtons cart__collection-btn cart__collection-btn--delivery " style=" background:white !important">
+
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <input type="hidden" id="IsDeliveryAvailable" value="@Model.displayModel.IsDeliveryAvailable" />
+                                <input type="hidden" id="IsPickupAvailable" value="@Model.displayModel.IsPickupAvailable" />
+
+                                @if (Model.displayModel.IsDeliveryAvailable == "Y")
+                                {
+                                <div class="radio-item">
+                                    <input type="radio" id="ritema" name="ritem" value="Delivery">
+                                    <label for="ritema">Delivery</label>
+                                </div>
+                                }
+
+                                @if (Model.displayModel.IsPickupAvailable == "Y")
+                                {
+
+                                <div class="radio-item">
+                                    <input type="radio" id="ritemb" name="ritem" value="Pickup">
+                                    <label for="ritemb">Pick up</label>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input id="CollectionTime" name="CollectionTime" type="hidden" value="ASAP" />
+            @*<div class="cart__time" id="cart__time-delivery">
+                *@
+                <div class="cart__time" id="cart__time-delivery">
+                    <div class="panel-heading" role="tab" id="headingeight">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#cart__time-delivery__dropdown" aria-expanded="true" aria-controls="collapse8">
+                                Delivery time
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="collapse cart__section--collapsible collapse in p-5" id="cart__time-delivery__dropdown">
+                        <div class="row" style="margin-bottom:10px;">
+                            @*@Html.DropDownListFor(item => Model.Time, new SelectList(ViewBag.timeListspick, "Value", "Text"), new { id = "ddldelvtime", @style = "min-width:100px", @class = "form-control" })*@
+                            @Html.DropDownListFor(item => Model.Time, new SelectList(ViewBag.timeListspick, "Value", "Text"), new { id = "ddldelvtime", @style = "min-width:100px", @class = "form-control", @onchange = "ChangeTime()" })
+                            @*modelItem => item.Qty*@
+                        </div>
+                    </div>
+                </div>
+
+                <div id="CartItems">
+                    @if (ViewBag.isempty == "N")
+                    {
+                    <div class="cart__order-details">
+                        <div class="panel-heading" role="tab" id="headingeight">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#cart__order-details--collapsible" aria-expanded="false" aria-controls="collapse8">
+                                    Cart Item
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="cart__section--collapsible collapse in" id="cart__order-details--collapsible" aria-expanded="true" style="">
+                            @{int i = 1;}
+                            @foreach (var item in Model.listshoppingItems)
+                            {
+
+                            //@MvcHtmlString.Create(Html.Encode(@Html.DisplayFor(modelItem => item.ItemName)).Replace("'", "-"));
+                            var name = @MvcHtmlString.Create(Html.Encode(@Html.DisplayFor(modelItem => item.ItemName)).Replace("&#39;", "-"));
+
+                            // var name1 = name.Replace(" ", "-");
+                            <div class="cart-item order-details__item cart-item--pulse" data-item-id="1380230" data-addon-ids="5579591">
+                                <div class="order-details__item-names">
+                                    <p class="order-details__item-name">@Html.DisplayFor(modelItem => item.Qty) x <span class="cart-item__title">@Html.DisplayFor(modelItem => item.ItemName) <span class="order-details__text--secondary"></span></span></p>
+                                    @*<p class="order-details__item-addon">+ Coca-Cola</p>*@
+                                </div>
+                                <div class="order-details__item-prices">
+                                    <p class="cart-item__price order-details__item-price" id="">@Html.DisplayFor(modelItem => item.ItemLinePrice)</p>
+                                    <p class="order-details__text--secondary cart__order-details-text--secondary">pr. stk.</p>
+                                </div>
+                                <div class="cart-item__qty-container">
+                                    <!-- Minus -->
+                                    <div id="RemoveCointainerFor-1380230-0">
+                                        <i class="fa fa-minus-circle" aria-hidden="true" onclick="AddItemtocart_pluse('@name','@Html.DisplayFor(modelItem => item.Price)','1','@Html.DisplayFor(modelItem => item.ItemId)','minuse')"></i>
+                                    </div>
+                                    <span class="cart-item__qty">@Html.DisplayFor(modelItem => item.Qty)</span>
+                                    <!-- Plus -->
+                                    <div>
+                                        <i class="fa fa-plus-circle" aria-hidden="true" onclick="AddItemtocart_pluse('@name','@Html.DisplayFor(modelItem => item.Price)','1','@Html.DisplayFor(modelItem => item.ItemId)','plus')"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                            <div class="order-details__section cart__subtotal">
+                                <div class="order-details__subtotal">
+                                    <p class="order-details__text--secondary">Subtotal</p>
+                                    <p id="subtotalPrice" class="cart__price--subtotal order-details__text--secondary">@Html.DisplayFor(modelItem => Model.CartTotal)</p>
+                                </div>
+                                <div class="order-details__subtotal" id="deliverycharge">
+                                    <p class="order-details__text--secondary">Delivery charge</p>
+                                    <p id="subtotalPricedelivery" class="cart__price--subtotal order-details__text--secondary">25</p>
+                                    @*<p id="noofitm" class="cart__price--subtotal order-details__text--secondary">@Html.DisplayFor(modelItem => Model.NoofItems)</p>*@
+                                </div>
+                                @*<div class="order-details__subtotal">
+                                    <p class="order-details__text--secondary">No of Items</p>
+                                    <p id="noofitms" class="cart__price--subtotal order-details__text--secondary">@Html.DisplayFor(modelItem => Model.NoofItems)</p>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                </div>
+            </div>
+            <a href='@Url.Action("Index", "ShoppingCart")' id="amenu">
+                <button class="button--enabled button--disabled cart__checkout-btn" type="button" id="submitOrderForm">
+                    @if (Model.displayModel.IsPickupAvailable == "N" && Model.displayModel.IsDeliveryAvailable == "N")
+                    {
+                    }
+                    else
+                    {
+                    <span class="js-cart-status js-cart--open">Check out</span>
+                    }
+                    <span class="js-cart-status js-cart__total"> No of Items : @Html.DisplayFor(modelItem => Model.NoofItems)</span>
+                    <span class="js-cart-status js-cart__total" id="grandtotal">@Html.DisplayFor(modelItem => Model.GrandCartTotal)</span>
+                </button>
+            </a>
+            <a id="ashop">
+                <button class="button--enabled button--disabled cart__checkout-btn" type="button" id="submitOrderForm">
+                    <span class="js-cart-status js-cart--open">Gross Total</span>
+                    <span class="js-cart-status js-cart__total"> No of Items : @Html.DisplayFor(modelItem => Model.NoofItems)</span>
+                    <span class="js-cart-status js-cart__total" id="grandtotalshop">@Html.DisplayFor(modelItem => Model.GrandCartTotal)</span>
+                </button>
+            </a>
+        </div>
+        <span class="cart-bar--hidden cart-bar-and-special-offers" id="btnClear">
+            <span class="defaultButtons  cart-bar">
+                <span class="cart-bar__loading-wave" hidden>
+                    <span class="cart-bar__dot"></span>
+                    <span class="cart-bar__dot"></span>
+                    <span class="cart-bar__dot"></span>
+                </span>
+                <span class="cart-bar__loading-wave--inverse cart-bar__display">
+                    <span class="cart-bar__continue-text">View cart</span>
+                    <span class="cart__item-count text-center" style="padding-left: 30px !important;"> No of Items : @Html.DisplayFor(modelItem => Model.NoofItems)</span>
+                    @*<span class="js-cart-status js-cart__total" id="grandtotal">@Html.DisplayFor(modelItem => Model.GrandCartTotal)</span>*@
+                    <span class="cart-bar__total" id="grandtotal">@Html.DisplayFor(modelItem => Model.GrandCartTotal)</span>
+                </span>
+            </span>
+        </span>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //debugger;
+            //var Deliverytipe = sessionStorage.getItem("deliverytypemenu");
+
+            var IsDeliveryAvailable = $("#IsDeliveryAvailable").val();
+            var IsPickupAvailable = $("#IsPickupAvailable").val();
+            var Deliverytipe = sessionStorage.getItem("deliverytypemenu"); //== null ? "Pickup" : sessionStorage.getItem("deliverytypemenu");
+
+            if (Deliverytipe == null) {
+                if (IsPickupAvailable == "Y") {
+                    Deliverytipe = "Pickup";
+                    sessionStorage.setItem("deliverytypemenu", "Pickup");
+                }
+                else if (IsDeliveryAvailable == "Y") {
+                    Deliverytipe = "Delivery";
+                    sessionStorage.setItem("deliverytypemenu", "Delivery");
+                }
+            }
+
+            if (Deliverytipe == "Pickup") {
+                $('input:radio[name=ritem][value=Pickup]').attr('checked', true);
+                $("#deliverycharge").removeClass("deliverychargeshow");
+                $("#deliverycharge").addClass("deliverycharge");
+            } else {
+                $('input:radio[name=ritem][value=Delivery]').attr('checked', true);
+                //$("#deliverycharge").style.display = "-webkit-inline-box";
+                $("#deliverycharge").removeClass("deliverycharge");
+                $("#deliverycharge").addClass("deliverychargeshow");
+
+            }
+
+            $(document).ready(function () {
+                $('input[type=radio][name=ritem]').change(function () {
+                    //debugger;
+                    if (this.value == "Pickup") {
+                        $("#deliverycharge").removeClass("deliverychargeshow");
+                        $("#deliverycharge").addClass("deliverycharge");
+
+                        var subtotalPrice = $("#subtotalPrice").text() || '0';
+
+                        var total = (parseFloat(subtotalPrice)).toFixed(2);
+
+                        $("#grandtotal").text('')
+                        $("#grandtotal").text(total);
+                        $("#grandtotalshop").text('')
+                        $("#grandtotalshop").text(total)
+                        //$("#noofitm").text(noofitem);
+                        sessionStorage.setItem("deliverytypemenu", "Pickup");
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("Setdeltype", "Menu")',
+                            data:
+                            {
+                                deltype: "Pickup"
+                            },
+                            success: function (result) {
+                            }
+                        });
+                    }
+                    else if (this.value == "Delivery") {
+                        $("#deliverycharge").removeClass("deliverycharge");
+                        $("#deliverycharge").addClass("deliverychargeshow");
+
+                        var subtotalPrice = $("#subtotalPrice").text() || '0';
+
+                        var total = (parseFloat(subtotalPrice) + 25).toFixed(2);
+
+                        $("#grandtotalshop").text('')
+                        $("#grandtotalshop").text(total);
+                        $("#grandtotal").text('')
+                        $("#grandtotal").text(total)
+                        //sessionStorage.setItem("deliverytypemenu", "Delivery");
+                        sessionStorage.setItem("deliverytypemenu", "Delivery");
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("Setdeltype", "Menu")',
+                            data:
+                            {
+                                deltype: "Delivery"
+                            },
+                            success: function (result) {
+                            }
+                        });
+
+                    }
+                })
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function ChangeTime() {
+            //alert('call me');
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ChangeTime", "Menu")',
+                data:
+                {
+                    //data: JSON.stringify(myObj),
+                    seltime: $("#ddldelvtime option:selected").val()
+                },
+                success: function (result) {
+                }
+            });
+        };
+    </script>

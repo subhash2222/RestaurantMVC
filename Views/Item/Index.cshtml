@@ -1,0 +1,373 @@
+﻿@model RestaurantMVC.Models.ItemAdmModel
+
+@{
+    Layout = "~/Views/Shared/_Layoutadm.cshtml";
+}
+
+<script type="text/javascript">
+    function Validate() {
+        //alert('Cal');
+        $('#lblerrormessage').text("");
+        var catgname = $("#txtcatgname").val();
+        //var ddlcode = $("#ddlcode").val();
+
+        if (catgname == null || catgname == "") {
+            document.getElementById('errormessage').style.display = "block";
+            $('#lblerrormessage').text("Please enter Category Name.");
+            document.getElementById('txtcatgname').focus();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+<div class="plcholder-cn">
+    <div class="content-wrapper">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Item Master</h3>
+                </div>
+                <div>
+                    @*<a class="m-btn-1 addnew @Model.Insert addnewitem" asp-controller="Category" asp-action="Create" method="Get"><i class="material-icons"></i><span>Add New</span></a>*@
+                    <a class="btn btn-success float-right" href="@Url.Action("Create", "Item")"><span>Add New</span></a>
+                    @*<a class="btn btn-success float-right" asp-controller="Category" asp-action="Create" method="Get"><span>Add New</span></a>*@
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="errormessage" style="display:none">
+                <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+            </div>
+            @if (ViewBag.Message != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                </div>
+            }
+            @if (ViewBag.MessageErr != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                </div>
+            }
+        </div>
+        <div class="pd-form-area">
+            @if (Model.AddNew == "new")
+            {
+                <div class="content-box" id="traddpanelView">
+                    <div class="m-form">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @*@using (Html.BeginForm("Create", "Item", FormMethod.Post))*@
+                                        @using (Html.BeginForm("Create", "Item", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @*@Html.AntiForgeryToken()*@
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="card-body">
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Category</label>
+                                                <div class="col-sm-4">
+                                                    @Html.DropDownListFor(m => m.item.Category_ID, new SelectList(ViewBag.Categorylist, "Category_ID", "Category_Name"), new { @id = "ddlcategory", @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.item.Category_ID, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <label class="col-sm-2 col-form-label">Item Name</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.Item_Name, new { htmlAttributes = new { @id = "txtitemname", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.item.Item_Name, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Item Rate</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.Item_Rate, new { htmlAttributes = new { Value = "", @class = "form-control", @id = "txtItemrate" } })
+                                                    @Html.ValidationMessageFor(m => m.item.Item_Rate, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Status</label>
+                                                <div class="col-sm-4">
+                                                    @*@Html.DropDownListFor(m => m.category.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), "Please select", new { @id = "ddlstatus" })*@
+                                                    @Html.DropDownListFor(m => m.item.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), new { @id = "ddlstatus", @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.item.status, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Display Seq No</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.display_Seq_No, new { htmlAttributes = new { Value = "", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.item.display_Seq_No, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Discount Percentage</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.Disc_Percentage, new { htmlAttributes = new { Value = "", @class = "form-control", @id = "txtdiscount" } })
+                                                    @Html.ValidationMessageFor(m => m.item.Disc_Percentage, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Is Special Discount</label>
+                                                <div class="col-sm-4">
+
+                                                    @Html.CheckBoxFor(m => m.item.IsSpecial, new { htmlAttributes = new { @class = "form-control", @id = "txtdiscount" } })
+                                                    @Html.ValidationMessageFor(m => m.item.IsSpecial)
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Is Discount</label>
+                                                <div class="col-sm-4">
+                                                    @Html.CheckBoxFor(m => m.item.IsDiscount, new { htmlAttributes = new { @class = "form-control", @id = "txtdiscount" } })
+                                                    @Html.ValidationMessageFor(m => m.item.IsDiscount)
+                                                </div>
+
+                                            </div>
+                                            @*<div class="col-md-10">
+            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" })
+            @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+        </div>*@
+                                            <div class="form-group row">
+                                                <label class="col-sm-2">Image</label>
+                                                <div>
+                                                    <input type="file" id="myfile" class="form-control" name="files" />
+                                                </div>
+                                            </div>
+                                           
+                                            @*<div class="form-group row">
+            <label class="col-sm-2">Image</label>
+            <div>
+                <input type="file" id="myfile" class="form-control" name="file" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2">Image</label>
+            @Html.TextBox("file", "", new { type = "file" })
+            @Html.TextBoxFor(m => m.File, "", new { type = "file" })
+        </div>*@
+
+                                        </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer text-center">
+                                                <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("Item", "Create")'" />
+                                                @Html.ActionLink("Close", "Index", new object { }, new { @class = "btn btn-primary" })
+                                                @*<a asp-action="Index" method="post" onclick="GetIndex('@Url.Action("")')" class="btn btn-primary">Close</a>*@
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+            @if (Model.Status == "edit")
+            {
+                <div class="content-box" id="traddpanelEdit">
+                    <div class="m-form">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("Edit", "Item", FormMethod.Post))
+                                        {
+                                            @*@Html.AntiForgeryToken()*@
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="card-body">
+                                            <div>
+                                                @Html.HiddenFor(m => m.item.Item_ID)
+                                                @*<input type="hidden" asp-for="@Model.category.Operated_By" value="Ashish" />
+            <input type="hidden" asp-for="@Model.category.IsInserted" value="I" />*@
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Category</label>
+                                                <div class="col-sm-4">
+                                                    @Html.DropDownListFor(m => m.item.Category_ID, new SelectList(ViewBag.Categorylist, "Category_ID", "Category_Name"), new { @id = "ddlcategory", @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.item.Category_ID, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <label class="col-sm-2 col-form-label">Item Name</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.Item_Name, new { htmlAttributes = new { @id = "txtitemname", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.item.Item_Name, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Item Rate</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.Item_Rate, new { htmlAttributes = new { @class = "form-control", @id = "txtItemrate" } })
+                                                    @Html.ValidationMessageFor(m => m.item.Item_Rate, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Status</label>
+                                                <div class="col-sm-4">
+                                                    @*@Html.DropDownListFor(m => m.category.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), "Please select", new { @id = "ddlstatus" })*@
+                                                    @Html.DropDownListFor(m => m.item.status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), new { @id = "ddlstatus", @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.item.status, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Display Seq No</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.display_Seq_No, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.item.display_Seq_No, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Discount Percentage</label>
+                                                <div class="col-sm-4">
+                                                    @Html.EditorFor(m => m.item.Disc_Percentage, new { htmlAttributes = new { @class = "form-control", @id = "txtdiscount" } })
+                                                    @Html.ValidationMessageFor(m => m.item.Disc_Percentage, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Is Special Discount</label>
+                                                <div class="col-sm-4">
+
+                                                    @Html.CheckBoxFor(m => m.item.IsSpecial, new { htmlAttributes = new { @class = "form-control", @id = "txtdiscount" } })
+                                                    @Html.ValidationMessageFor(m => m.item.IsSpecial)
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Is Discount</label>
+                                                <div class="col-sm-4">
+                                                    @Html.CheckBoxFor(m => m.item.IsDiscount, new { htmlAttributes = new { @class = "form-control", @id = "txtdiscount" } })
+                                                    @Html.ValidationMessageFor(m => m.item.IsDiscount)
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2">Image</label>
+                                                <div>
+                                                    <input type="file" id="myfile" class="form-control" name="files" />
+                                                </div>
+                                                <div>
+                                                    @if (Model.item.Item_ID == Model.item.Item_ID)
+                                                    {
+
+                                                        {
+                                                            <img src="~/ImageFolder/@ViewBag.imagearray" alt="Image" />
+                                                            <br />
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+
+                                                        ViewBag.imagearray1 = "file not found";
+                                                    }
+
+
+                                                </div>
+                                                @*<div>
+
+            <img src="@ViewBag.imagearray" alt="Image" />
+
+        </div>*@
+
+                                                @*<div class="display-field">
+                    <img src="@Url.Content(@Model.item.Image)" alt="@Model.item.Image" />
+
+
+
+        </div>*@
+                                                @*<div>
+            @if (ViewBag.imagearray != null)
+            {
+            <img alt="Uploaded Image" src="@ViewBag.imagearray" />
+            }
+        </div>*@
+
+
+                                            </div>
+                                
+                                            </div>
+                                           
+                                       
+                                            <!-- /.card-body -->
+                                            <div class="card-footer text-center">
+                                                <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("Item", "Edit")'" />
+                                                @Html.ActionLink("Close", "Index", new object { }, new { @class = "btn btn-primary" })
+                                                @*<a asp-action="Index" method="post" onclick="GetIndex('@Url.Action("")')" class="btn btn-primary">Close</a>*@
+                                            </div>
+                                        }
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+        <!-- /.content-wrapper -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="admtbl" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Item Name</th>
+                                        <th>Item Rate</th>
+                                        <th>Status</th>
+                                        <th>IsSpecial</th>
+                                        <th>IsDiscount</th>
+                                        <th>Disc Percentage</th>
+                                        <th>Display Seq NO</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ListItem)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Category_Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Item_Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Item_Rate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.statusdesc)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IsSpecial)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IsDiscount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Disc_Percentage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.display_Seq_No)
+                                        </td>
+                                       
+                                        <td>
+                                            @Html.ActionLink(" ", "Edit", "Item", new { pitemid = @item.Item_ID }, new { @class = "far fa-edit pr-3", title = "Edit" })
+                                            @Html.ActionLink(" ", "Delete", "Item", new { pitemid = @item.Item_ID }, new { @class = "far fa-trash-alt", title = "Delete", onclick = "return confirm('Are you sure to delete this record?');" })
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+</div>

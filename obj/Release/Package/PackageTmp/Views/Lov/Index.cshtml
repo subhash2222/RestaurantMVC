@@ -1,0 +1,278 @@
+﻿@model RestaurantMVC.Models.LovEntryModel
+
+@{
+    Layout = "~/Views/Shared/_Layoutadm.cshtml";
+}
+
+<script type="text/javascript">
+    function Validate() {
+        //alert('Cal');
+        $('#lblerrormessage').text("");
+        var catgname = $("#txtcatgname").val();
+        //var ddlcode = $("#ddlcode").val();
+
+        if (catgname == null || catgname == "") {
+            document.getElementById('errormessage').style.display = "block";
+            $('#lblerrormessage').text("Please enter Lov Column.");
+            document.getElementById('txtcatgname').focus();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+<div class="plcholder-cn">
+    <div class="content-wrapper">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">LovEntry Master</h3>
+                </div>
+                <div>
+                    @*<a class="m-btn-1 addnew @Model.Insert addnewitem" asp-controller="Category" asp-action="Create" method="Get"><i class="material-icons"></i><span>Add New</span></a>*@
+                    <a class="btn btn-success float-right" href="@Url.Action("Create", "Lov")"><span>Add New</span></a>
+                    @*<a class="btn btn-success float-right" asp-controller="Category" asp-action="Create" method="Get"><span>Add New</span></a>*@
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="errormessage" style="display:none">
+                <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+            </div>
+            @if (ViewBag.Message != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                </div>
+            }
+            @if (ViewBag.MessageErr != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                </div>
+            }
+        </div>
+        <div class="pd-form-area">
+            @if (Model.AddNew == "new")
+            {
+                <div class="content-box" id="traddpanelView">
+                    <div class="m-form">
+                        <section class="content">
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("Create", "Lov", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="card-body">
+                                                <div>
+                                                    @*@Html.HiddenFor(m => m.table.IsInserted)
+                                                    <input type="hidden" asp-for="@Model.table.Operated_By" value="Ashish" />
+                                                    <input type="hidden" asp-for="@Model.table.IsInserted" value="I" />*@
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Lov Column</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.loventry.Lov_Column, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Lov_Column, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <label class="col-sm-2 col-form-label">Lov Code</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.loventry.Lov_Code, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Lov_Code, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Description</label>
+                                                    <div class="col-sm-4">
+
+                                                        @Html.EditorFor(m => m.loventry.Lov_Desc, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Lov_Desc, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <label class="col-sm-2 col-form-label">Status</label>
+                                                    <div class="col-sm-4">
+
+                                                        @Html.DropDownListFor(m => m.loventry.Status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), new { @id = "ddlstatus", @class = "form-control" })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Status, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+                                                    <label class="col-sm-2 col-form-label">Display Seq No</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.loventry.display_Seq_No, new { htmlAttributes = new { Value = "", @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.display_Seq_No, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                            ///.card - body
+                                            <div class="card-footer text-center">
+                                                <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("Lov", "Create")'" />
+                                                @Html.ActionLink("Close", "Index", new object { }, new { @class = "btn btn-primary" })
+
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+            @if (Model.Status == "edit")
+            {
+                <div class="content-box" id="traddpanelEdit">
+                    <div class="m-form">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @using (Html.BeginForm("Edit", "Lov", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="card-body">
+                                                <div>
+                                                    @Html.HiddenFor(m => m.loventry.Lov_Column)
+                                                      @Html.HiddenFor(m => m.loventry.Lov_Code)
+                                                    @*@Html.HiddenFor(m => m.table.IsInserted)
+                                                    <input type="hidden" asp-for="@Model.table.Operated_By" value="Ashish" />
+                                                    <input type="hidden" asp-for="@Model.table.IsInserted" value="I" />*@
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Lov Column</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.loventry.Lov_Column, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Lov_Column, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <label class="col-sm-2 col-form-label">Lov Code</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.loventry.Lov_Code, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Lov_Code, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Description</label>
+                                                    <div class="col-sm-4">
+
+                                                        @Html.EditorFor(m => m.loventry.Lov_Desc, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Lov_Desc, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <label class="col-sm-2 col-form-label">Status</label>
+                                                    <div class="col-sm-4">
+
+                                                        @Html.DropDownListFor(m => m.loventry.Status, new SelectList(ViewBag.statuslist, "Lov_Code", "Lov_Desc"), new { @id = "ddlstatus", @class = "form-control" })
+                                                        @Html.ValidationMessageFor(m => m.loventry.Status, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+                                                    <label class="col-sm-2 col-form-label">Display Seq No</label>
+                                                    <div class="col-sm-4">
+                                                        @Html.EditorFor(m => m.loventry.display_Seq_No, new {  htmlAttributes = new {  @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(m => m.loventry.display_Seq_No, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                            ///.card - body
+                                            <div class="card-footer text-center">
+                                                <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("Lov", "Edit")'" />
+                                                @Html.ActionLink("Close", "Index", new object { }, new { @class = "btn btn-primary" })
+                                                @*<a asp-action="Index" method="post" onclick="GetIndex('@Url.Action("")')" class="btn btn-primary">Close</a>*@
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+        <!-- /.content-wrapper -->
+
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="admtbl" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Lov Column</th>
+                                        <th>Lov Code</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Display Seq NO</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Listlov)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Lov_Column)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Lov_Code)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Lov_Desc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Statusdesc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.display_Seq_No)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink(" ", "Edit", "Lov", new { plovcolumn = @item.Lov_Column , plovcode = item.Lov_Code }, new { @class = "far fa-edit pr-3", title = "Edit" })
+                                            @Html.ActionLink(" ", "Delete", "Lov", new { plovcolumn = @item.Lov_Column, plovcode = item.Lov_Code }, new { @class = "far fa-trash-alt", title = "Delete", onclick = "return confirm('Are you sure to delete this record?');" })
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+
+
+
+ 
+    </div>
+</div>

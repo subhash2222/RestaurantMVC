@@ -1,0 +1,346 @@
+﻿@model RestaurantMVC.Models.RestaurantSettingModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layoutadm.cshtml";
+
+    var abc = ViewBag.Message;
+}
+<style>
+    .box-title {
+        background-color: #848484;
+        color: white;
+    }
+</style>
+<script src="~/theme/plugins/jquery/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="~/theme/fonts/font.css" rel="stylesheet" />
+<script>
+
+    $(document).ready(function ()
+    {
+        //debugger;
+         var message = "@ViewBag.Message";
+
+        var MessageErr = "@ViewBag.MessageErr";
+
+            if (message != "")
+            {
+                alert(message);
+            }
+            if (MessageErr != "")
+            {
+                alert(MessageErr);
+
+            }
+
+        });
+    $(document).ready(function () {
+        var startDate = moment();
+        var startDate1 = moment().add(1, 'days');
+        //alert("a");
+
+        var res_sDate = $("#Res_Close_Start_Date").val();
+        var res_eDate = $("#Res_Close_End_Date").val();
+
+        var pick_sDate = $("#Pickup_Close_Start_Date").val();
+        var pick_eDate = $("#Pickup_Close_End_Date").val();
+
+        var del_sDate = $("#Delv_Close_Start_Date").val();
+        var del_eDate = $("#Delv_Close_End_Date").val();
+
+
+        var Res_startDate = res_sDate != '' || res_sDate != null ? moment(res_sDate).format('DD/MM/YYYY') : moment();
+        //alert(Res_startDate)
+        var Res_endDate = res_eDate != '' || res_eDate != null ? moment(res_eDate).format('DD/MM/YYYY') : moment();
+
+        var Pick_startDate = pick_sDate != '' || pick_sDate != null ? moment(pick_sDate).format('DD/MM/YYYY') : moment();
+        var Pick_endDate = pick_eDate != '' || pick_eDate != null ? moment(pick_eDate).format('DD/MM/YYYY') : moment();
+
+        var Del_startDate = del_sDate != '' || del_sDate != null ? moment(del_sDate).format('DD/MM/YYYY') : moment();
+        var Del_endDate = del_eDate != '' || del_eDate != null ? moment(del_eDate).format('DD/MM/YYYY') : moment();
+
+        $('#Res_Close_Start_Date').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2000,
+            startDate: Res_startDate,
+            //maxYear: parseInt(moment().format('YYYY'), 10),
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+
+        $('#Res_Close_End_Date').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2000,
+            startDate: Res_endDate,
+            //maxYear: parseInt(moment().format('YYYY'), 10),
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+
+        $('#Pickup_Close_Start_Date').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2000,
+            startDate: Pick_startDate,
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+
+        $('#Pickup_Close_End_Date').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2000,
+            startDate: Pick_endDate,
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+
+        $('#Delv_Close_Start_Date').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2000,
+            startDate: Del_startDate,
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+
+        $('#Delv_Close_End_Date').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 2000,
+            startDate: Del_endDate,
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        });
+    });
+
+    function isNumeric(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+    function SaveSetting() {
+        //debugger;
+        var url1 = "Setting/Create";
+        var datas = "";
+        datas = $('#form1').serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Create", "Settings")',
+            data: datas,
+
+            success: function (response) {
+                //debugger;
+                if (response.Message != null && response.Message != "") {
+                    swal.fire('Success',response.Message,'success');
+                }
+                if (response.ErrorMessage != null && response.ErrorMessage != "") {
+                    swal.fire('Error', response.ErrorMessage,'error');
+                }
+            }
+        });
+    }
+</script>
+<div class="plcholder-cn">
+    <div class="content-wrapper">
+        <div class="col-md-12">
+            <div id="errormessage" style="display:none">
+                <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+            </div>
+            @if (ViewBag.Message != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                </div>
+            }
+            @if (ViewBag.MessageErr != "")
+            {
+                <div id="message">
+                    <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                </div>
+            }
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Restaurant Settings</h3>
+                </div>
+                <div>
+                    <lable class="error-message">@ViewBag.Message</lable>
+                </div>
+            </div>
+        </div>
+
+        <div class="pd-form-area">
+
+            <div class="content-box" id="traddpanelView">
+                <div class="m-form">
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @*@using (Html.BeginForm("Create", "Settings", FormMethod.Post))
+                                        {*@
+                                    <form id="form1">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="card-body">
+                                            <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                                            <div class="form-group row">
+                                                <label class="col-sm-12 col-form-label box-title">Restaurant Close Setting</label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Closed From Date</label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Res_Close_Start_Date, new { htmlAttributes = new { @class = "form-control", id = "Res_Close_Start_Date" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Res_Close_Start_Date, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Closed To Date </label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Res_Close_End_Date, new { htmlAttributes = new { @class = "form-control", id = "Res_Close_End_Date" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Res_Close_End_Date, "", new { @class = "text-danger" })
+                                                    <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                                                </div>
+
+                                                <label class="col-sm-2 col-form-label">Display Message Before No of Days </label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Res_Msg_No_of_Days, new { htmlAttributes = new { @min = "1", @class = "form-control", id = "Res_Msg_No_of_Days", @onkeypress = "return isNumeric(event)" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Res_Msg_No_of_Days, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Close Message(Eng) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Res_Close_Message, new { htmlAttributes = new { @class = "form-control", id = "Res_Close_Message" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Res_Close_Message, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Close Message(Dan) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Res_Close_Message_Dan, new { htmlAttributes = new { @class = "form-control danFont", id = "Res_Close_Message_Dan" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Res_Close_Message_Dan, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-12 col-form-label box-title">Pickup Close Setting</label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Closed From Date</label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Pickup_Close_Start_Date, new { htmlAttributes = new { @class = "form-control", id = "Pickup_Close_Start_Date" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Pickup_Close_Start_Date, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Closed To Date </label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Pickup_Close_End_Date, new { htmlAttributes = new { @class = "form-control", id = "Pickup_Close_End_Date" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Pickup_Close_End_Date, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Display Message Before No of Days </label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Pickup_Msg_No_of_Days, new { htmlAttributes = new { @min = "1", @class = "form-control", id = "Pickup_Msg_No_of_Days", @onkeypress = "return isNumeric(event)" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Pickup_Msg_No_of_Days, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Close Message(Eng) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Pickup_Close_Message, new { htmlAttributes = new { @class = "form-control", id = "Pickup_Close_Message" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Pickup_Close_Message, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Close Message(Dan) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Pickup_Close_Message_Dan, new { htmlAttributes = new { @class = "form-control danFont", id = "Pickup_Close_Message_Dan" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Pickup_Close_Message_Dan, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-12 col-form-label box-title">Delivery Close Setting</label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Closed From Date</label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Delv_Close_Start_Date, new { htmlAttributes = new { @class = "form-control", id = "Delv_Close_Start_Date" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Delv_Close_Start_Date, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Closed To Date </label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Delv_Close_End_Date, new { htmlAttributes = new { @class = "form-control", id = "Delv_Close_End_Date" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Delv_Close_End_Date, "", new { @class = "text-danger" })
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Display Message Before No of Days </label>
+                                                <div class="col-sm-2">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Delv_Msg_No_of_Days, new { htmlAttributes = new { @min = "1", @class = "form-control", id = "Delv_Msg_No_of_Days", @onkeypress = "return isNumeric(event)" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Delv_Msg_No_of_Days, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Close Message(Eng) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Delv_Close_Message, new { htmlAttributes = new { @class = "form-control", id = "Delv_Close_Message" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Delv_Close_Message, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Close Message(Dan) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.Delv_Close_Message_Dan, new { htmlAttributes = new { @class = "form-control danFont", id = "Delv_Close_Message_Dan" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.Delv_Close_Message_Dan, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-12 col-form-label box-title">Weekly off Setting</label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Weekly Off</label>
+                                                <div class="col-sm-2">
+                                                    @Html.DropDownListFor(m => m.RestaurantSettingDTO.WeeklyOffDay, new SelectList(ViewBag.Weekdays, "dayName", "Description"), new { @id = "ddlweeklyoff", @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.WeeklyOffDay, "", new { @class = "text-danger" })
+                                                </div>                                                
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Weekly off Message(Eng) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.WeeklyOffMsg, new { htmlAttributes = new { @class = "form-control", id = "Weeklyoff_Message" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.WeeklyOffMsg, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Weekly off Message(Dan) </label>
+                                                <div class="col-sm-10">
+                                                    @Html.EditorFor(m => m.RestaurantSettingDTO.WeeklyOffMsgDan, new { htmlAttributes = new { @class = "form-control danFont", id = "Weeklyoff_Message_Dan" } })
+                                                    @Html.ValidationMessageFor(m => m.RestaurantSettingDTO.WeeklyOffMsgDan, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <input type="button" value="Save" id="submit" class="btn btn-primary save" onclick="SaveSetting()" @*onclick="location.href='@Url.Action("Settings", "Create")'"*@ />
+                                            @Html.ActionLink("Close", "Index", new object { }, new { @class = "btn btn-primary" })
+                                        </div>
+                                    </form>
+                                    @*}*@
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿
+@model RestaurantMVC.Models.LoginViewModel
+@{
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - North Indian Restaurant</title>
+    <!-- metatags-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="food court login form a Flat Responsive Widget,Login form widgets, Sign up Web 	forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <link rel="shortcut icon" href="~/Content/assets/img/favicon.ico" type="image/x-icon">
+    <link href="~/theme/login/css/style.css" rel="stylesheet" />
+    <!--online fonts-->
+    <link href="//fonts.googleapis.com/css?family=Lobster&amp;subset=cyrillic,latin-ext,vietnamese" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Righteous&amp;subset=latin-ext" rel="stylesheet">
+    <!--//online fonts-->
+    <style>
+        .error-message {
+            display: block;
+            text-align: left;
+            margin-left: 135px;
+            color: red;
+            font-family: 'Righteous', cursive;
+            font-size: 17px;
+        }
+       
+    </style>
+</head>
+<body>
+    @*<a class="navbar-brand" href='@Url.Action("Index", "Home")'><img src="~/Content/assets/img/logo.png" alt="Logo img" style="width:200px;height:35px;"></a>*@
+    <h1>The <span>N</span>orth<span> I</span>ndian<span> R</span>estaurant</h1>
+    @*<h1>Login</h1>*@
+    <div class="wthree-form">
+        <h2>Login</h2>
+        <div class="w3l-login form">
+            @*<form action="#" method="post">*@
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+            {
+
+            <div class="form-sub-w3">
+                @Html.EditorFor(m => m.UserId, new { htmlAttributes = new { @class = "", @placeholder = "User Name" } })
+                <lable class="error-message"> @Html.ValidationMessageFor(model => model.UserId)</lable>
+                @*<input type="text" name="Username" placeholder="Username" required="" />*@
+            </div>
+            
+                <div class="form-sub-w3">
+                    @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "", @placeholder = "Password", @type = "password" } })
+                    <lable class="error-message">   @Html.ValidationMessageFor(model => model.Password)</lable>
+                 
+                    @*<input type="password" name="Password" placeholder="Password" required="" />*@
+                </div>
+                <label class="anim">
+                    @*<input type="checkbox" class="checkbox">*@
+                    @*<span>Remember Me</span>*@
+                </label>
+                <lable class="error-message">@ViewBag.ErrorMessage</lable>
+                <div class="submit-agileits">
+                    <input type="submit" value="Login">
+                </div>
+                @*<a href="#">Forgot Password ?</a>*@
+            }
+            @*</form>*@
+        </div>
+    </div>
+    @*<div class="footer-agileits">
+            <p>&copy; food court login Form. All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
+        </div>*@
+</body>
+</html>

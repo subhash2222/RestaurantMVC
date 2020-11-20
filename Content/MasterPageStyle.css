@@ -1,0 +1,55 @@
+﻿.Message--animate {
+    display: none;
+    margin-top: -35px;
+}
+
+.pshow {
+    display: block;
+}
+
+.Message-sticky {
+    background-color: #b9a020;
+    color: #fff;
+    display: block;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.Message--animate {
+    display: none;
+    margin-top: -35px;
+}
+.Message-sticky {
+    background-color: #b9a020;
+    color: #fff;
+    display: block;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.a_cookie {
+    font-size: 0.9em;
+    margin: 0.5em 0.75em;
+    padding: 0 0.5em;
+    display: inline-block;
+}
+
+.marketstrip {
+    color: white !important;
+}
+.fa_Cookie {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    margin: 0;
+    padding: 0.75em;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+

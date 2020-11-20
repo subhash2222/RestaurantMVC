@@ -1,0 +1,666 @@
+﻿@model RestaurantMVC.Models.MenuItemDetailModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Menu";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<link href="~/Content/assets/css/menu.css?v=2.22" rel="stylesheet" />
+<link href="~/Content/assets/css/font-awesome.css?v=1.10" rel="stylesheet" />
+@*<link href="~/Content/menu.css?v=0.02" rel="stylesheet" />*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.panel-collapse').on('show.bs.collapse', function () {
+            $(this).siblings('.panel-heading').addClass('active');
+        });
+
+        $('.panel-collapse').on('hide.bs.collapse', function () {
+            $(this).siblings('.panel-heading').removeClass('active');
+        });
+
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("body").on("click", "#btnClear", function () {
+            $('#cart-column').addClass('cart__background');
+            $('.cart').addClass('cart--expanded');
+        });
+
+        $("body").on("click", "#divclose", function () {
+            $('#cart-column').removeClass('cart__background');
+            $('#Cart').removeClass('cart--expanded');;
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //alert('Menu Item');
+        document.getElementById("cart__time-delivery").style.display = "none";
+        document.getElementById("ashop").style.display = "none";
+    });
+
+    function btnradio_Click(itemid, optionname) {
+        //alert(optionname);
+
+        $("#span_" + itemid + "").show();
+        $("#option_" + itemid + "").text(optionname);
+    }
+</script>
+
+
+<style>
+    .mu-menu-btn {
+        font-size: 25px;
+        font-weight: bolder;
+        letter-spacing: 1.5px;
+        line-height: 20px;
+    }
+
+    .special-offer-container {
+        background-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 0)
+    }
+
+    .defaultBorder {
+        border-color: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultText--dark {
+        color: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultText {
+        color: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultButtons--maxlight {
+        background: rgba(245, 245, 245, 1) !important
+    }
+
+    .defaultButtons--light {
+        background: rgba(166, 166, 166, 1) !important
+    }
+
+    .defaultButtons--dark {
+        background: rgba(0, 0, 0, 1) !important
+    }
+
+    .defaultButtons {
+        background: rgba(0, 0, 0, 1) !important;
+        color: rgba(255, 255, 255, 1) !important
+    }
+
+    .panel-body {
+        padding: 0px;
+    }
+</style>
+
+<style type="text/css">
+    .pagination {
+        display: inline-block;
+        float: right;
+    }
+
+        .pagination a {
+            font-family: "Open Sans", sans-serif;
+            font-size: 18px;
+            color: black;
+            float: left;
+            margin: 0 15px;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: antiquewhite;
+        }
+
+            .pagination a pageactive {
+                color: red;
+            }
+
+            .pagination a:hover, .pagination a:active a {
+                color: white;
+                background-color: black;
+            }
+
+    .activepagination {
+        color: white !important;
+        background-color: black !important;
+    }
+</style>
+<script>
+
+        $(document).ready(function () {
+            $('input').blur('blur', function (event) {
+                var values = $(this).val();
+                    if(values == "")
+                    {
+                    $(this).val("1");
+                    }
+            });
+        });
+
+
+    function selectedmenu(mnid) {
+        //alert(mnid);
+        if (mnid == 1) {
+            $("#umnu1").show();
+            $("#umnu2").hide();
+            $("#umnu3").hide();
+            $("#umnu4").hide();
+            //$("#umnu1 breakfast").trigger( "click" );
+            //$("a1")
+            $(".pageclass").removeClass("activepagination");
+            $(".restaurant").removeClass("active");
+            $("#breakfast_page").addClass("activepagination");
+            $("#breakfast_tab").addClass("active");
+            $(".tab-pane").removeClass("active");
+            $("#breakfast").addClass("in active");
+
+            jQuery('html, body').animate({scrollTop : 0},800);
+        }
+        if (mnid == 2) {
+            $("#umnu1").hide();
+            $("#umnu2").show();
+            $("#umnu3").hide();
+            $("#umnu4").hide();
+            $(".restaurant").removeClass("active");
+            $(".pageclass").removeClass("activepagination");
+            $("#Veg_page").addClass("activepagination");
+            $("#Veg_tab").addClass("active");
+            $(".tab-pane").removeClass("active");
+            $("#Veg").addClass("in active");
+           // alert($("#umnu2 Veg"));
+            //$("#umnu2 #Veg").trigger( "click" );
+            //$("#umnu2").addClass("pagination a active");
+        }
+        if (mnid == 3) {
+            $("#umnu1").hide();
+            $("#umnu2").hide();
+            $("#umnu3").show();
+            $("#umnu4").hide();
+            $(".restaurant").removeClass("active");
+            $(".pageclass").removeClass("activepagination");
+            $("#vegi_page").addClass("activepagination");
+            $("#vegi_tab").addClass("active");
+            $(".tab-pane").removeClass("active");
+            $("#vegi").addClass("in active");
+           jQuery('html, body').animate({scrollTop : 0},800);
+            //$("#umnu3").addClass("pagination a active");
+        }
+        if (mnid == 4) {
+            $("#umnu1").hide();
+            $("#umnu2").hide();
+            $("#umnu3").hide();
+            $("#umnu4").show();
+            $(".restaurant").removeClass("active");
+            $(".pageclass").removeClass("activepagination");
+            $("#Accessories_page").addClass("activepagination");
+            $("#Accessories_tab").addClass("active");
+            $(".tab-pane").removeClass("active");
+            $("#Accessories").addClass("in active");
+            //$("#umnu3").addClass("pagination a active");
+        }
+    }
+
+    function AddItemtocart_pluse(itemlbl, pricelbl, qtylbl, itemid, types) {
+        //alert(expr);
+        var itemname = itemlbl;
+        var qty = qtylbl;
+        var id = itemid;
+        var price = pricelbl;
+        var itemlblqtys = '#lbl_'.concat(itemid);
+    
+        var itemlblqty = $(itemlblqtys).text().trim();
+        var radioValue = $("input[name='ritem']:checked").val();
+       
+        var myObj = { menuitem: itemname, itemqty: qty, itemprice: price, itemid: id ,types: types, deliverytype: radioValue };
+     
+           $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddItem", "Menu")',
+                data:
+                    {
+                    data: JSON.stringify(myObj),
+               },
+               success: function (result) {
+                   if (result.msgType == "S") {
+
+                       var serviceUrl = "/MenuDynamic/Cart_load";
+                        var request = $.post(serviceUrl);
+                        request.done(function (data) {
+                            $("#partaildiv").html('');
+                            $("#partaildiv").html(data);
+
+                            if (itemlblqty != "") {
+                                if (types == "plus") {
+
+                                    itemlblqty = parseInt(itemlblqty) + 1;
+                                }
+                                else {
+                                    itemlblqty = parseInt(itemlblqty) - 1;
+                                }
+
+                            } else
+                            {
+                                itemlblqty = 1;
+                            }
+                            $(itemlblqtys).text(itemlblqty);
+
+                            document.getElementById("cart__time-delivery").style.display = "none";
+                            document.getElementById("ashop").style.display = "none";
+                        })
+                            .fail(function () {
+                            });
+
+
+                        //$("#messageotp").show();
+                        //$("#messageotp").html(result.message);
+                        //$("#messageerrotp").hide();
+                    } else {
+                        //$("#messageotp").hide();
+                        //$("#messageerrotp").show();
+                        //$("#messageerrotp").html(result.message);
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+            return false;
+    }
+
+    function AddItemtocart(itemname, id, price) {
+        //alert(expr);
+        //alert(id);
+        var itemlbl = '#lbl_'.concat(id);
+        var optionid = '#option_'.concat(id);
+        //var itemname = $(itemlbl).html();
+        //var qtylbl = '#txtqty'.concat(expr);
+        var itemlblqty = $(itemlbl).text().trim();
+        var optionname = $(optionid).text().trim();
+        var qty = "1";
+        if (qty == 0) {
+            $(qtylbl).val(1);
+            qty = 1;
+        }
+        var radioValue = $("input[name='ritem']:checked").val();
+
+        var myObj = { menuitem: itemname, itemqty: qty, itemprice: price, itemid: id, types: 'plus', deliverytype: radioValue, Optionalname: optionname };
+           $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddItem", "MenuDynamic")',
+                data:
+                    {
+                    data: JSON.stringify(myObj),
+               },
+                success: function (result) {
+                    //alert(result.msgType);
+                    //alert(result.message);
+                    if (result.msgType == "S") {
+
+                         //var serviceUrl = "/header";
+                         //   var request = $.post(serviceUrl);
+                         //   request.done(function (data) {
+                         //       $("#mu-header").html(data);
+                         //   })
+                         //   .fail(function () {
+                         //   });
+
+                        var serviceUrl = "/MenuDynamic/Cart_load";
+                        var request = $.post(serviceUrl);
+                        request.done(function (data) {
+                            $("#partaildiv").html('');
+                            $("#partaildiv").html(data);
+                            if (itemlblqty != "") {
+                                itemlblqty = parseInt(itemlblqty) + 1;
+                            } else
+                            {
+                                itemlblqty = 1;
+                            }
+                            $(itemlbl).text(itemlblqty);
+                            document.getElementById("cart__time-delivery").style.display = "none";
+                            document.getElementById("ashop").style.display = "none";
+                        })
+                            .fail(function () {
+                            });
+                        //$("#messageotp").show();
+                        //$("#messageotp").html(result.message);
+                        //$("#messageerrotp").hide();
+                    } else {
+                        //$("#messageotp").hide();
+                        //$("#messageerrotp").show();
+                        //$("#messageerrotp").html(result.message);
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+            return false;
+    }
+
+        function Addtocart(itemname, price, qty) {
+            //alert('call');
+            alert(itemname);
+            alert(price);
+            alert(qty);
+            @*var 11 = '@RestaurantMVC.Resources.MenuItem.MenuItem1_2';
+            alert(11);*@
+            var dd = $('#lblmenuitem1_1').val();
+            alert(dd);
+            var myObj = { menuitem: itemname, itemqty: price, password: qty };
+            alert(myObj);
+           $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddItem", "MenuDynamic")',
+                data:
+                    {
+                    data: JSON.stringify(myObj),
+                    },
+            });
+            return false;
+    }
+
+    function AssignButtonClicked(elem){
+        var id = $(elem).data('assigned-id');
+        alert(id);
+}
+
+</script>
+<!-- Menu Index -->
+<link href="~/Content/assets/css/cart_view.css?v=2.1" rel="stylesheet" />
+
+<section id="Menu" class="menu-container">
+    <div class="defaultButtons menu__overlay"></div>
+    <div class="menu__overlay menu__overlay--light"></div>
+    <div class="menu-page">
+        <section id="mu-restaurant-menu" class="menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mu-restaurant-menu-area">
+                            <div class="mu-title">
+                                <span class="mu-subtitle">@RestaurantMVC.Resources.Home.AboutUs</span>
+                                <h2>@RestaurantMVC.Resources.Home.OurMenu</h2>
+                            </div>
+                            <div class="wrapper center-block" style="margin-top: 100px;">
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    @foreach (var item in Model.ListmenuItemMain)
+                                    {
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="headingOne">
+                                                <h4 class="panel-title">
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#@item.Menu_ID" aria-expanded="false" aria-controls="collapseOne">
+                                                        @item.Menu_Name
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="@item.Menu_ID" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="panel-body">
+                                                    <div class="tab-pane fade in active" id="breakfast">
+                                                        <div class="mu-tab-content-area">
+                                                            <div class="row">
+                                                                @{
+                                                                    var even = false;
+                                                                    foreach (var item2 in Model.ListmenuItemDetail)
+                                                                    {
+                                                                        if (item2.Menu_ID == item.Menu_ID)
+                                                                        {
+                                                                            if (even)
+                                                                            {
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                                    <div class="row">
+                                                                                        <div class="col-lg-3 col-md-6 col-sm-6 media-left">
+                                                                                            <ul class="mu-menu-item-nav">
+                                                                                                <li>
+                                                                                                    <div class="media">
+                                                                                                        <div class="mu-item-single-gallery col-sm-3">
+                                                                                                            <div class="mu-item-single-gallery-item">
+                                                                                                                <div class="media-left">
+                                                                                                                    <figure class="mu-item-single-gallery-img">
+                                                                                                                        <a class="Item-imglink" href="~/Content/assets/img/ItemImages/@item2.Imageurl">
+                                                                                                                            <img class="media-object" src="~/Content/assets/img/ItemImages//@item2.Imageurl" alt="img" />
+                                                                                                                            <div class="mu-item-single-gallery-info">
+                                                                                                                                <img class="mu-view-btn" src="~/Content/assets/img/plus.png" alt="plus icon img" />
+                                                                                                                            </div>
+                                                                                                                        </a>
+                                                                                                                    </figure>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="col-lg-9 col-md-6 col-sm-6">
+                                                                                            <div class="row">
+                                                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                                                    <span class="">
+                                                                                                        <h4 class="">
+                                                                                                            <span class="badge" style="background-color:red;margin-right:5px;">@item2.DisplayCode</span><a href="#" id="lblitem1_5a">@item2.Item_Name</a>
+                                                                                                            @{ var counter = 0;
+                                                                                                                foreach (var item3 in Model.shoppingCartDetail.listshoppingItems)
+                                                                                                                {
+
+                                                                                                                    if (item2.Item_ID == item3.ItemId)
+                                                                                                                    {
+                                                                                                                        counter = 1;
+                                                                                                                        <span class="badge" style="background-color:#FFA500;margin-right:5px;" id="lbl_@item2.Item_ID">@Html.DisplayFor(modelItem => item3.Qty)</span>
+                                                                                                                    }
+
+                                                                                                                }
+                                                                                                                if (counter == 0)
+                                                                                                                {
+                                                                                                                    <span class="badge" style="background-color:#FFA500;margin-right:5px;" id="lbl_@item2.Item_ID"></span>
+                                                                                                                }
+
+                                                                                                            }
+
+                                                                                                            @{
+                                                                                                                foreach (var item5 in Model.ListMenuItemOption)
+                                                                                                                {
+                                                                                                                    if (item2.Item_ID == item5.Item_ID)
+                                                                                                                    {
+                                                                                                                        if (item5.Option_Name == "Medium")
+                                                                                                                        {
+                                                                                                                            <span id="span_@item2.Item_ID">
+                                                                                                                                (<label id="option_@item2.Item_ID">@item5.Option_Name</label>)
+                                                                                                                            </span>
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+
+                                                                                                        </h4>
+
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <form>
+
+                                                                                                @{
+                                                                                                    foreach (var item5 in Model.ListMenuItemOption)
+                                                                                                    {
+                                                                                                        if (item2.Item_ID == item5.Item_ID)
+                                                                                                        {
+                                                                                                            if (item5.Option_Name == "Medium")
+                                                                                                            {
+                                                                                                                <input type="radio" name="radioName" value="@item5.Option_Name" onclick="btnradio_Click('@item5.Item_ID','@item5.Option_Name');" checked /> @item5.Option_Name <br />
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                <input type="radio" name="radioName" value="@item5.Option_Name" onclick="btnradio_Click('@item5.Item_ID','@item5.Option_Name');" /> @item5.Option_Name <br />
+                                                                                                            }
+                                                                                                        }
+
+                                                                                                    }
+
+                                                                                                }
+
+                                                                                            </form>
+
+
+
+
+                                                                                            <div class="form-group">
+                                                                                                <div class="col-sm-3">
+                                                                                                    <span class="mu-menu-price">
+                                                                                                        <label class="mu-menu-price" style="color: #FFA500;"> Kr.@item2.Item_Rate</label>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                <div class="col-sm-3 text-left">
+                                                                                                    <input id="btn1_5a" type="button" class="mu-menu-btn" value="+" onclick="AddItemtocart('@item2.Item_Name','@item2.Item_ID','@item2.Item_Rate')" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <br /><p>@item2.Item_Desc</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-lg-3 col-md-6 col-sm-6 media-left">
+                                                                                            <ul class="mu-menu-item-nav">
+                                                                                                <li>
+                                                                                                    <div class="media">
+                                                                                                        <div class="mu-item-single-gallery col-sm-3">
+                                                                                                            <div class="mu-item-single-gallery-item">
+                                                                                                                <div class="media-left">
+                                                                                                                    <figure class="mu-item-single-gallery-img">
+                                                                                                                        <a class="Item-imglink" href="~/Content/assets/img/ItemImages/@item2.Imageurl">
+                                                                                                                            <img class="media-object" src="~/Content/assets/img/ItemImages//@item2.Imageurl" alt="img" />
+                                                                                                                            <div class="mu-item-single-gallery-info">
+                                                                                                                                <img class="mu-view-btn" src="~/Content/assets/img/plus.png" alt="plus icon img" />
+                                                                                                                            </div>
+                                                                                                                        </a>
+                                                                                                                    </figure>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="col-lg-9 col-md-6 col-sm-6">
+                                                                                            <div class="row">
+                                                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                                                    <span class="">
+                                                                                                        <h4 class="">
+                                                                                                            <span class="badge" style="background-color:red;margin-right:5px;">@item2.DisplayCode</span><a href="#" id="lblitem1_5a">@item2.Item_Name</a>
+                                                                                                            @{ var counter = 0;
+                                                                                                                foreach (var item3 in Model.shoppingCartDetail.listshoppingItems)
+                                                                                                                {
+
+                                                                                                                    if (item2.Item_ID == item3.ItemId)
+                                                                                                                    {
+                                                                                                                        counter = 1;
+                                                                                                                        <span class="badge" style="background-color:#FFA500;margin-right:5px;" id="lbl_@item2.Item_ID">@Html.DisplayFor(modelItem => item3.Qty)</span>
+                                                                                                                    }
+
+                                                                                                                }
+                                                                                                                if (counter == 0)
+                                                                                                                {
+                                                                                                                    <span class="badge" style="background-color:#FFA500;margin-right:5px;" id="lbl_@item2.Item_ID"></span>
+                                                                                                                }
+
+                                                                                                            }
+
+                                                                                                            @{
+                                                                                                                foreach (var item5 in Model.ListMenuItemOption)
+                                                                                                                {
+                                                                                                                    if (item2.Item_ID == item5.Item_ID)
+                                                                                                                    {
+                                                                                                                        if (item5.Option_Name == "Medium")
+                                                                                                                        {
+                                                                                                                            <span id="span_@item2.Item_ID">
+                                                                                                                                (<label id="option_@item2.Item_ID">@item5.Option_Name</label>)
+                                                                                                                            </span>
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+
+
+                                                                                                        </h4>
+                                                                                                        @*<h4 class=""><span class="badge" style="background-color:red;margin-right:5px;">@item2.DisplayCode</span><a href="#" id="lblitem1_5a">@item2.Item_Name</a> <span class="badge" style="background-color:#FFA500;margin-right:5px;" id="lbl_@item2.Item_ID"></span></h4>*@
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <form>
+
+                                                                                                @{
+                                                                                                    foreach (var item5 in Model.ListMenuItemOption)
+                                                                                                    {
+                                                                                                        if (item2.Item_ID == item5.Item_ID)
+                                                                                                        {
+                                                                                                            if (item5.Option_Name == "Medium")
+                                                                                                            {
+                                                                                                                <input type="radio" name="radioName" value="@item5.Option_Name" onclick="btnradio_Click('@item5.Item_ID','@item5.Option_Name');" checked /> @item5.Option_Name <br />
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                <input type="radio" name="radioName" value="@item5.Option_Name" onclick="btnradio_Click('@item5.Item_ID','@item5.Option_Name');" /> @item5.Option_Name <br />
+                                                                                                            }
+                                                                                                        }
+
+                                                                                                    }
+
+                                                                                                }
+
+                                                                                            </form>
+
+                                                                                            <div class="form-group">
+                                                                                                <div class="col-sm-3">
+                                                                                                    <span class="mu-menu-price">
+                                                                                                        <label class="mu-menu-price" style="color: #FFA500;"> Kr.@item2.Item_Rate</label>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                <div class="col-sm-3 text-left">
+                                                                                                    <input id="btn1_5a" type="button" class="mu-menu-btn" value="+" onclick="AddItemtocart('@item2.Item_Name','@item2.Item_ID','@item2.Item_Rate')" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <br /><p>@item2.Item_Desc</p>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                            even = !even;
+                                                                        }
+
+                                                                    }
+                                                                }
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cart-column" id="cart-column">
+
+            @{
+                Html.RenderAction("Cart_Index", "MenuDynamic");
+            }
+
+            @*@Html.Partial("~/Views/Menu/_cart_partail.cshtml", @Model.shoppingCartDetail)*@
+        </div>
+    </div>
+</section>

@@ -1,0 +1,210 @@
+﻿@model RestaurantMVC.Models.ShoppingCartDetail
+@{
+
+}
+@*<link href="~/Content/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/assets/css/bootstrap.css" rel="stylesheet">*@
+<link href="~/Content/assets/css/shoppingcart.css?v=0.12" rel="stylesheet" />
+<style type="text/css">
+    .TextBoxAsLabel {
+        border: none;
+        background-color: #fff;
+        background: transparent;
+    }
+</style>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('[id*="txtqty"]').blur('blur', function (event) {
+            var values = $(this).val();
+            if (values == "") {
+                $(this).val("1");
+            }
+        });
+    });
+</script>
+<div id="dvcart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <div class="card shopping-cart card-header bg-primary text-light" style="background-color: black">
+                        <span class="p1 fa-stack fa-2x has-badge">
+                            <i class="p3 fa fa-shopping-cart f07a" data-count="4b"></i>
+                        </span>
+                        <span></span>Shipping cart
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                @if (ViewBag.isempty == "N")
+                {
+                    <div id="dvcartitem" runat="server" class="">
+                        <table class="">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Item</th>
+                                    <th class="text-left">Quantity</th>
+                                    <th class="text-left">Price</th>
+                                    <th class="text-left">Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int i = 1;}
+                                @foreach (var item in Model.listshoppingItems)
+                                {
+                                    <tr>
+                                        <td class="text-left" data-column="Item">
+                                            @Html.EditorFor(modelItem => item.ItemName, new { htmlAttributes = new { @id = "lblitem" + i, @class = "TextBoxAsLabel", @readonly = "readonly" } })
+                                        </td>
+                                        <td class="text-left" data-column="Quantity">
+                                            @*<div class="col-sm-4 text-left quntitys">*@
+                                            <div class="text-left" style="width:67px">
+                                                @Html.EditorFor(modelItem => item.Qty, new { htmlAttributes = new { oninput = "validity.valid||(value='1')", onchange = "Onqtychange(" + i + ")", @class = "form-control", @type = "number", @min = "1", @step = "1", @value = "0", @id = "txtqty" + i } })
+                                            </div>
+                                        </td>
+                                        <td class="text-left" data-column="Price">
+                                            @*@Html.DisplayFor(modelItem => item.Price)*@
+                                            @Html.EditorFor(modelItem => item.Price, new { htmlAttributes = new { @id = "lblprice" + i, @class = "TextBoxAsLabel", @readonly = "readonly" } })
+                                        </td>
+                                        <td class="text-left" data-column="Total">
+                                            @Html.EditorFor(modelItem => item.ItemLinePrice, new { htmlAttributes = new { @id = "ItemLinePrice" + i, @class = "TextBoxAsLabel", @readonly = "readonly" } })
+                                            @*@Html.DisplayFor(modelItem => item.ItemLinePrice)*@
+                                        </td>
+                                        <td style="text-align: left" data-column="">
+                                            <a href="@Url.Action("DeleteItem", "ShoppingCart", new { pitemname = @item.ItemName })">
+                                                <i class="fa fa-trash" aria-hidden="true" style="color:red"></i>
+                                            </a>
+                                            @*@Html.ActionLink("Delete", "DeleteItem", "ShoppingCart", new { pitemname = @item.ItemName }, new { @class = "far fa-trash-alt", title = "Delete", onclick = "return confirm('Are you sure to delete this record?');" })*@
+                                        </td>
+                                    </tr>
+                                    i = i + 1;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="divdelivery" style="display:none">
+                        <div class="text-center col-md-6" data-column="">
+
+                        </div>
+                        <div class="text-center col-md-4" data-column="">
+                            <strong>
+                                Delivery charge :
+                            </strong>
+                            <strong>
+                                25
+                            </strong>
+                        </div>
+                        <div class="text-center col-md-2" data-column="">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-center col-md-8" data-column="">
+                            <h3>
+                                <strong>
+                                    No of Items :
+                                    @Html.DisplayFor(modelItem => Model.NoofItems)
+                                </strong>
+                            </h3>
+
+
+                        </div>
+                        <div class="text-center col-md-2" data-column="">
+                            <h3>
+                                <strong>
+                                    Total :
+                                </strong>
+                                <strong id="totalamount">
+                                    @Html.DisplayFor(modelItem => Model.GrandCartTotal)
+                                </strong>
+                            </h3>
+                        </div>
+                        <div class="text-center col-md-2" data-column="">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="col-md-8" data-column="">
+
+                        </div>
+                        <div class="text-center col-md-2" data-column="">
+                            <a href="@Url.Action("Index", "Menu")" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping
+                            </a>
+                        </div>
+                        <div class="text-center col-md-2" data-column="">
+                            <a class="btn btn-success" onclick="toggle_visibility('dvcod');" href="#">
+                                Checkout <span class="glyphicon glyphicon-play"></span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (ViewBag.isempty == "Y")
+                {
+                    <div id="dvnoitem" runat="server" style="padding:10px 0">
+                        <div class="card">
+                            <div class="row">
+                                <div class="p2 col-sm-12 col-md-10 col-md-offset-1">
+                                    <div class="card-header">
+                                        <div class="col-sm-8 col-md-6">
+                                            <span style="font-weight:bold">No Item Added to the Shopping Cart</span>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <a href='@Url.Action("Index", "Menu")' class="btn btn-primary">
+                                                <span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    function Onqtychange(id) {
+        var itemlable = "#lblitem" + id;
+        var qty = "#txtqty" + id;
+        var price = "#lblprice" + id;
+        //var itemname = $(itemlable).val();
+        //var quantity = $(qty).val();
+        //var prc = $(price).val();
+        //alert(itemname);
+        //alert(quantity);
+        //alert(prc);
+         var scObj = { ItemName: $(itemlable).val(), Qty: $(qty).val(), Price: $(price).val()};
+        //alert(JSON.stringify(scObj));
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ModifyShoppingcart", "ShoppingCart")',
+            data:
+            {
+                data: JSON.stringify(scObj),
+            },
+            success: function (data) {
+                //alert("success");
+                //alert(data);
+                //this.form.submit();
+                //$('#myform').submit();
+                //alert("succes1111s");
+                //$("#dvcartitem").html(data);
+                $("#dvcart").html('');
+                $("#dvcart").html(data);
+                //document.getElementById("dvtmp").textContent = data;
+            },
+            error: function () {
+                //alert("error");
+            }
+        });
+        return false;
+    }
+
+</script>

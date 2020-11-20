@@ -1,0 +1,274 @@
+D:\Projects\RestaurantMVC\bin\RestaurantMVC.dll.config
+D:\Projects\RestaurantMVC\bin\RestaurantMVC.dll
+D:\Projects\RestaurantMVC\bin\RestaurantMVC.pdb
+D:\Projects\RestaurantMVC\bin\da\RestaurantMVC.resources.dll
+D:\Projects\RestaurantMVC\bin\Antlr3.Runtime.dll
+D:\Projects\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Projects\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Projects\RestaurantMVC\bin\Microsoft.Owin.dll
+D:\Projects\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Projects\RestaurantMVC\bin\Microsoft.Owin.Security.dll
+D:\Projects\RestaurantMVC\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\RestaurantMVC\bin\Newtonsoft.Json.dll
+D:\Projects\RestaurantMVC\bin\Owin.dll
+D:\Projects\RestaurantMVC\bin\System.Web.Helpers.dll
+D:\Projects\RestaurantMVC\bin\System.Web.Mvc.dll
+D:\Projects\RestaurantMVC\bin\System.Web.Optimization.dll
+D:\Projects\RestaurantMVC\bin\System.Web.Razor.dll
+D:\Projects\RestaurantMVC\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\RestaurantMVC\bin\System.Web.WebPages.dll
+D:\Projects\RestaurantMVC\bin\System.Web.WebPages.Razor.dll
+D:\Projects\RestaurantMVC\bin\WebGrease.dll
+D:\Projects\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Projects\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Projects\RestaurantMVC\bin\Microsoft.Owin.xml
+D:\Projects\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Projects\RestaurantMVC\bin\Microsoft.Owin.Security.xml
+D:\Projects\RestaurantMVC\bin\System.Web.Helpers.xml
+D:\Projects\RestaurantMVC\bin\System.Web.Mvc.xml
+D:\Projects\RestaurantMVC\bin\System.Web.Optimization.xml
+D:\Projects\RestaurantMVC\bin\System.Web.Razor.xml
+D:\Projects\RestaurantMVC\bin\System.Web.WebPages.xml
+D:\Projects\RestaurantMVC\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\RestaurantMVC\bin\System.Web.WebPages.Razor.xml
+D:\Projects\RestaurantMVC\bin\Newtonsoft.Json.xml
+D:\Projects\RestaurantMVC\bin\Antlr3.Runtime.pdb
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.csprojAssemblyReference.cache
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.resources
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.resources
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.da.resources
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.da.resources
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.GenerateResource.cache
+D:\Projects\RestaurantMVC\obj\Debug\da\RestaurantMVC.resources.dll
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CopyComplete
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.dll
+D:\Projects\RestaurantMVC\obj\Debug\RestaurantMVC.pdb
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\RestaurantMVC.dll.config
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\RestaurantMVC.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\RestaurantMVC.pdb
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\da\RestaurantMVC.resources.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Antlr3.Runtime.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.Owin.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.Owin.Security.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.Web.Infrastructure.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Newtonsoft.Json.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Owin.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Helpers.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Mvc.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Optimization.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Razor.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.WebPages.Deployment.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.WebPages.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.WebPages.Razor.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\WebGrease.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.Owin.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Microsoft.Owin.Security.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Helpers.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Mvc.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Optimization.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.Razor.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.WebPages.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.WebPages.Deployment.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\System.Web.WebPages.Razor.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Newtonsoft.Json.xml
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\bin\Antlr3.Runtime.pdb
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.csprojAssemblyReference.cache
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.resources
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.resources
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.da.resources
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.da.resources
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.GenerateResource.cache
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CoreCompileInputs.cache
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\da\RestaurantMVC.resources.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CopyComplete
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.dll
+D:\RAJESH\RestaurantMVC_Latest\RestaurantMVC\obj\Debug\RestaurantMVC.pdb
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\RestaurantMVC.dll.config
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\RestaurantMVC.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\RestaurantMVC.pdb
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\da\RestaurantMVC.resources.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Antlr3.Runtime.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Security.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.Web.Infrastructure.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Newtonsoft.Json.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Owin.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Helpers.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Mvc.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Optimization.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Razor.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Deployment.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Razor.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\WebGrease.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Security.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Helpers.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Mvc.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Optimization.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.Razor.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Deployment.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Razor.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Newtonsoft.Json.xml
+D:\subhash\RestaurantMVC\RestaurantMVC\bin\Antlr3.Runtime.pdb
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csprojAssemblyReference.cache
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.resources
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.resources
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.da.resources
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.da.resources
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.GenerateResource.cache
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CoreCompileInputs.cache
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\da\RestaurantMVC.resources.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CopyComplete
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.dll
+D:\subhash\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.pdb
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\RestaurantMVC.dll.config
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\RestaurantMVC.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\RestaurantMVC.pdb
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\da\RestaurantMVC.resources.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Antlr3.Runtime.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Security.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.Web.Infrastructure.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Newtonsoft.Json.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Owin.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Helpers.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Mvc.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Optimization.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Razor.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Deployment.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Razor.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\WebGrease.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Microsoft.Owin.Security.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Helpers.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Mvc.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Optimization.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.Razor.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Deployment.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\System.Web.WebPages.Razor.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Newtonsoft.Json.xml
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\bin\Antlr3.Runtime.pdb
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csprojAssemblyReference.cache
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.resources
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.resources
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.da.resources
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.da.resources
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.GenerateResource.cache
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CoreCompileInputs.cache
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\da\RestaurantMVC.resources.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CopyComplete
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.dll
+E:\MVC Projects\RestaurantMVC\RestaurantMVC\obj\Debug\RestaurantMVC.pdb
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\RestaurantMVC.dll.config
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\RestaurantMVC.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\RestaurantMVC.pdb
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\da\RestaurantMVC.resources.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Antlr3.Runtime.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.Owin.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.Owin.Security.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Newtonsoft.Json.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Owin.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Helpers.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Mvc.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Optimization.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Razor.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.WebPages.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.WebPages.Razor.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\WebGrease.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.Owin.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Microsoft.Owin.Security.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Helpers.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Mvc.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Optimization.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.Razor.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.WebPages.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\System.Web.WebPages.Razor.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Newtonsoft.Json.xml
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\bin\Antlr3.Runtime.pdb
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.resources
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.resources
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.da.resources
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.da.resources
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.GenerateResource.cache
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\da\RestaurantMVC.resources.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CopyComplete
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.dll
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.pdb
+D:\Projects\Restaurant_WithMessages\RestaurantMVC\obj\Debug\RestaurantMVC.csprojAssemblyReference.cache
+D:\Core project\Other\RestaurantMVC\bin\RestaurantMVC.dll.config
+D:\Core project\Other\RestaurantMVC\bin\RestaurantMVC.dll
+D:\Core project\Other\RestaurantMVC\bin\RestaurantMVC.pdb
+D:\Core project\Other\RestaurantMVC\bin\da\RestaurantMVC.resources.dll
+D:\Core project\Other\RestaurantMVC\bin\Antlr3.Runtime.dll
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.Owin.dll
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.Owin.Security.dll
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.Web.Infrastructure.dll
+D:\Core project\Other\RestaurantMVC\bin\Newtonsoft.Json.dll
+D:\Core project\Other\RestaurantMVC\bin\Owin.dll
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Helpers.dll
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Mvc.dll
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Optimization.dll
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Razor.dll
+D:\Core project\Other\RestaurantMVC\bin\System.Web.WebPages.Deployment.dll
+D:\Core project\Other\RestaurantMVC\bin\System.Web.WebPages.dll
+D:\Core project\Other\RestaurantMVC\bin\System.Web.WebPages.Razor.dll
+D:\Core project\Other\RestaurantMVC\bin\WebGrease.dll
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.Owin.xml
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Core project\Other\RestaurantMVC\bin\Microsoft.Owin.Security.xml
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Helpers.xml
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Mvc.xml
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Optimization.xml
+D:\Core project\Other\RestaurantMVC\bin\System.Web.Razor.xml
+D:\Core project\Other\RestaurantMVC\bin\System.Web.WebPages.xml
+D:\Core project\Other\RestaurantMVC\bin\System.Web.WebPages.Deployment.xml
+D:\Core project\Other\RestaurantMVC\bin\System.Web.WebPages.Razor.xml
+D:\Core project\Other\RestaurantMVC\bin\Newtonsoft.Json.xml
+D:\Core project\Other\RestaurantMVC\bin\Antlr3.Runtime.pdb
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.csprojAssemblyReference.cache
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.resources
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.resources
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.Home.da.resources
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.Resources.MenuItem.da.resources
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.GenerateResource.cache
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CoreCompileInputs.cache
+D:\Core project\Other\RestaurantMVC\obj\Debug\da\RestaurantMVC.resources.dll
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.csproj.CopyComplete
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.dll
+D:\Core project\Other\RestaurantMVC\obj\Debug\RestaurantMVC.pdb

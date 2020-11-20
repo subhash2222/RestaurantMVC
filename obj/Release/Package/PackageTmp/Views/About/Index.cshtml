@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About Us";
+}
+
+<div>
+    <section id="mu-about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-about-us-area">
+                        <div class="mu-title">
+                            <span class="mu-subtitle">@RestaurantMVC.Resources.Home.AboutUs</span>
+                            <h2><span>@RestaurantMVC.Resources.Home.MenuAbout</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mu-about-us-left">
+                                    <img src="~/Content/assets/img/about-us.png" alt="img">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mu-about-us-right">
+                                    <p>
+                                        <asp:Literal ID="ltrabt" runat="server"></asp:Literal>
+                                    </p>
+                                    <p>@RestaurantMVC.Resources.Home.Abt1</p>
+                                    <p>@RestaurantMVC.Resources.Home.Abt2</p>
+                                    <p>@RestaurantMVC.Resources.Home.Abt3</p>
+                                    <p>@RestaurantMVC.Resources.Home.Abt4</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

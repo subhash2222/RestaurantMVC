@@ -1,0 +1,149 @@
+﻿@model RestaurantMVC.Models.DisplayModel
+
+<style>
+    .Message--animate {
+        display: none;
+        margin-top: -35px;
+    }
+
+    .pshow {
+        display: block;
+    }
+
+    .Message-sticky {
+        background-color: #b9a020;
+        color: #fff;
+        display: block;
+        text-align: center;
+        position: relative;
+        width: 100%;
+    }
+
+    .Message--animate {
+        display: none;
+        margin-top: -35px;
+    }
+
+    .Message-sticky {
+        background-color: #b9a020;
+        color: #fff;
+        display: block;
+        text-align: center;
+        position: relative;
+        width: 100%;
+    }
+
+    .a_cookie {
+        font-size: 0.9em;
+        margin: 0.5em 0.75em;
+        padding: 0 0.5em;
+        display: inline-block;
+    }
+
+    .marketstrip {
+        color: white !important;
+    }
+
+    .fa_Cookie {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 50px;
+        width: 50px;
+        display: inline-block;
+        margin: 0;
+        padding: 0.75em;
+        cursor: pointer;
+        z-index: 9999;
+    }
+</style>
+<header id="mu-header">
+
+
+    <nav class="navbar navbar-default mu-main-navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- LOGO -->
+                <!--  Text based logo  -->
+                <!--<a class="navbar-brand" href="index.html">Osteria<span>X</span></a> -->
+                <!--  Image based logo  -->
+                @*@Html.ActionLink()*@
+                @*<a href="@Url.Action("WidgetView", "Home")" title="Logo" class="navbar-brand">
+                        <img alt="logo" src="@Url.Content("~/Content/assets/img/SampleLogo.jpg")">
+                        Widget View
+                    </a>*@
+
+                <a class="navbar-brand" href='@Url.Action("Index", "Home")'><img src="~/Content/assets/img/logo.png" alt="Logo img"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
+                    <li><a href='@Url.Action("Index", "Home")'>@RestaurantMVC.Resources.Home.Menuhome</a></li>
+                    <li><a href='@Url.Action("Index", "About")'>@RestaurantMVC.Resources.Home.MenuAbout</a></li>
+                    <li><a href='@Url.Action("Index", "MenuDynamic")'>@RestaurantMVC.Resources.Home.Menu</a></li>
+                    <li><a href='@Url.Action("Index", "Reservation")'>@RestaurantMVC.Resources.Home.MenuReser</a></li>
+                    <li><a href='@Url.Action("Index", "Gallary")'>@RestaurantMVC.Resources.Home.MenuGallary</a></li>
+                    <li><a href='@Url.Action("Index", "Contact")'>@RestaurantMVC.Resources.Home.MenuContact</a></li>
+                    @*<li>
+                        <div id="ex4">
+                            <a href='@Url.Action("Index", "ShoppingCart")'>
+                                <span class="fa-stack fa-2x has-badge" data-count="@Session["cartitemcount"]" id="cartcount" style="margin-top:10px;">
+                                    <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                                    <i style="" class="fa fa-shopping-cart fa-stack-2x red-cart"></i>
+                                </span>                              
+                            </a>
+                        </div>
+                    </li>*@
+                    <li>
+                        <a href='@Url.Action("Change", "Home", new { language = "en-Us" })'><img width="30" height="30" src="~/Content/assets/img/EL.png" alt="English"></a>
+                    </li>
+                    <li>
+                        <a href='@Url.Action("Change", "Home", new { language = "da" })'><img width="30" height="30" src="~/Content/assets/img/DL.png" alt="Danish"></a>
+                    </li>
+                    @*<li>
+                           <div class="dropdown">
+                                    <span>@Html.ActionLink("English", "Change", "Home", new { language = "en-Us" }, null)</span>
+                                    <div class="dropdown-content">
+                                        <p>@Html.ActionLink("Danish", "Change", "Home", new { language = "da" }, null)</p>
+                                    </div>
+                                </div>
+                        </li>*@
+                    @*<li>@Html.ActionLink("English", "Change", "Home", new { language = "en-Us" }, null)</li>
+                        <li>@Html.ActionLink("Danish", "Change", "Home", new { language = "da" }, null)</li>*@
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+    @if (Model.DisplayMsgOnHome == "Y")
+    {
+        <div id="wrap_Cookie" class="pshow" style="display:block">
+
+        <header role="banner" id="banner" class="Masthead" style="background-color:persion green;">
+            <!-- Start Sticky Banner -->
+            <div class="Message-sticky Message--animate" style="background-color:persion green;">
+                <br />
+                <b>
+                    <a style="color:black;">
+                        <span class="marketstrip" style="font-weight:bold;">
+                            <font color="#ffffff" face="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"><span style="font-size: 15px;font-family:National-Book,Helvetica,sans-serif">@Model.ResCloseMsg</span></font><br>
+                        </span>
+                    </a>
+                </b>
+                @*<i class="fa fa-times fa_Cookie" aria-hidden="true" onclick="PopUpCookie();"></i>*@
+
+            </div>
+        </header>
+    </div>
+    }
+
+
+</header>

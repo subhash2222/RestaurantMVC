@@ -1,0 +1,121 @@
+﻿@model RestaurantMVC.Models.AboutModel
+@{
+    Layout = "~/Views/Shared/_Layoutadm.cshtml";
+}
+
+
+<script src="~/theme/ckeditor/ckeditor.js"></script>
+<link href="~/theme/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function Validate() {
+
+        $('#lblerrormessage').text("");
+        var Cke = $("#Ckeditor").val();
+
+
+        if (Cke == null || Cke == "") {
+            document.getElementById('errormessage').style.display = "block";
+            $('#lblerrormessage').text("Please enter Description");
+            document.getElementById('Ckeditor').focus();
+            return false;
+        }
+
+        else {
+            return true;
+        }
+    }
+</script>
+
+<div class="plcholder-cn">
+    <div class="content-wrapper">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">About</h3>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div id="errormessage" style="display:none">
+                <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+            </div>
+            @if (ViewBag.Message != "")
+            {
+            <div id="message">
+                <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+            </div>
+            }
+            @if (ViewBag.MessageErr != "")
+            {
+            <div id="message">
+                <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+            </div>
+            }
+        </div>
+        <div class="pd-form-area">
+
+            <div class="content-box" id="traddpanelView">
+                <div class="m-form">
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @using (Html.BeginForm("Create", "About", FormMethod.Post))
+                                    {
+                                    @*@Html.AntiForgeryToken()*@
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                    @*<div class="form-group">
+                                        @Html.HiddenFor(m => m.about.ID)
+
+                                    </div>
+
+                                    @if (@Model.about.ID == 0)
+                                    {
+                                    @Html.HiddenFor(m => m.about.IsInserted, new { Value = "I" })
+                                    }
+                                    else
+                                    {
+                                    @Html.HiddenFor(m => m.about.IsInserted, new { Value = "U" })
+                                    }*@
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            @Html.HiddenFor(m => m.about.ID)
+
+                                        </div>
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(m => m.about.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div ass="col-md-10">
+                                                @Html.TextAreaFor(m => m.about.Description, new { @id = "Ckeditor", @class = "form-control", @rows = "2000" })
+                                                @Html.ValidationMessageFor(m => m.about.Description, "", new { @class = "text-danger" })
+                                                <script>
+                                                    CKEDITOR.replace("Ckeditor");
+                                                </script>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer text-center">
+                                        <input type="submit" value="Save" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action(" About", "Create" )'" />
+
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /.content-wrapper -->
+
+
+    </div>
+</div>

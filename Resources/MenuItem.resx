@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MenuDec10_1" xml:space="preserve">
+    <value>Homemade Cheese with Butter, Creamy Sauce, Raisins, Coconut, Honey, topped with Nut Mix</value>
+  </data>
+  <data name="MenuDec10_2" xml:space="preserve">
+    <value>Mixed Lentils cooked with Cumin, Ginger and Garlic.</value>
+  </data>
+  <data name="MenuDec10_3" xml:space="preserve">
+    <value>Homemade Cheese made with Spinach and Spice Dough.</value>
+  </data>
+  <data name="MenuDec10_4" xml:space="preserve">
+    <value>Fresh mixed vegetables with curry and tomato sauce.</value>
+  </data>
+  <data name="MenuDec10_5" xml:space="preserve">
+    <value>Potatoes with light Curry sauce, Ginger and Garlic.</value>
+  </data>
+  <data name="MenuDec10_6" xml:space="preserve">
+    <value>Potatoes, spinach and spices.</value>
+  </data>
+  <data name="MenuDec10_7" xml:space="preserve">
+    <value>Potatoes peas, curry sauce and spices.</value>
+  </data>
+  <data name="MenuDec11_1" xml:space="preserve">
+    <value>Pepper, Chicken baked in tandoor, Tomato sauce, Chilli, Ginger, Garlic.</value>
+  </data>
+  <data name="MenuDec11_1a" xml:space="preserve">
+    <value>pepper, lamb, tomato sauce, chilli, ginger, garlic.</value>
+  </data>
+  <data name="MenuDec11_2" xml:space="preserve">
+    <value>Pepper, Homemade Cheese, Chilli, Ginger, White log</value>
+  </data>
+  <data name="MenuDec11_3" xml:space="preserve">
+    <value>Fish in mild curry sauce.</value>
+  </data>
+  <data name="MenuDec11_4" xml:space="preserve">
+    <value>Curry, cream, almonds, cashews, coriander.</value>
+  </data>
+  <data name="MenuDec11_5" xml:space="preserve">
+    <value>Lamb Korma Creamy Lamb with Curry Sauce, Creamy, Nut Mix, Ginger, Butter and Coriander.</value>
+  </data>
+  <data name="MenuDec11_5a" xml:space="preserve">
+    <value>Curry sauce, cream, almonds, cashews.</value>
+  </data>
+  <data name="MenuDec11_7" xml:space="preserve">
+    <value>Creamy chicken fillet and curry sauce, Tops with nut mix.</value>
+  </data>
+  <data name="MenuDec12_1" xml:space="preserve">
+    <value>Fresh Indian bread baked in Tandoori</value>
+  </data>
+  <data name="MenuDec12_2" xml:space="preserve">
+    <value>Fresh Indian bread with garlic baked in Tandoori.</value>
+  </data>
+  <data name="MenuDec12_3" xml:space="preserve">
+    <value>Fresh Indian bread with butter baked in Tandoori.</value>
+  </data>
+  <data name="MenuDec12_4" xml:space="preserve">
+    <value>Traditional Indian bread</value>
+  </data>
+  <data name="MenuDec13_1" xml:space="preserve">
+    <value>Dough bun in syrup, classic hot indian dessert,topped with nut mix</value>
+  </data>
+  <data name="MenuDec14_9" xml:space="preserve">
+    <value>1 or 2L</value>
+  </data>
+  <data name="MenuDec15_1" xml:space="preserve">
+    <value>Mango, Mint Chutney, Pickles, Ketchup or Mayo</value>
+  </data>
+  <data name="MenuDec16_1" xml:space="preserve">
+    <value>Chickpeas with curry sauce, 2 pcs. naan bread, pickles chutney,vinegar and red onion</value>
+  </data>
+  <data name="MenuDec16_2" xml:space="preserve">
+    <value>Chickpeas with curry sauce, 2 pcs. Fry Indian wheat flour bread,pickles chutney, vinegar and red onion.</value>
+  </data>
+  <data name="MenuDec16_3" xml:space="preserve">
+    <value>Chickpeas with curry sauce, 2 pcs. fry wheat flour bread, pickles chutney, vinegar and red onion</value>
+  </data>
+  <data name="MenuDec17_1" xml:space="preserve">
+    <value>Butter Chicken, Lamb, Ox, King Prawn, Creamy Chicken, Lamb Korma Creamy</value>
+  </data>
+  <data name="MenuDec18_5" xml:space="preserve">
+    <value>Fried and lightly spiced rice with green peas (For children)</value>
+  </data>
+  <data name="MenuDec18_5a" xml:space="preserve">
+    <value>Mix Vegetarian, basmati rice, turmeric and coriander</value>
+  </data>
+  <data name="MenuDec18_6" xml:space="preserve">
+    <value>Basmati Rice</value>
+  </data>
+  <data name="MenuDec18_Raita" xml:space="preserve">
+    <value>Incl. Boondi Raita</value>
+  </data>
+  <data name="MenuDec1_1a" xml:space="preserve">
+    <value>Homemade delicious Indian chips multicolored.</value>
+  </data>
+  <data name="MenuDec1_2" xml:space="preserve">
+    <value>Thin Sprede Snacks</value>
+  </data>
+  <data name="MenuDec1_3" xml:space="preserve">
+    <value>Samosa with Potatoes, Peas fried, in Spicy Dough</value>
+  </data>
+  <data name="MenuDec1_4" xml:space="preserve">
+    <value>Samosa with Chicken, Peas fried, in Spicy Dough</value>
+  </data>
+  <data name="MenuDec1_5" xml:space="preserve">
+    <value>Onion Rings fried in Spicy Dough</value>
+  </data>
+  <data name="MenuDec1_5a" xml:space="preserve">
+    <value>Potatoes fried in spicy dough.</value>
+  </data>
+  <data name="MenuDec1_6" xml:space="preserve">
+    <value>Chicken fried in Spicy Dough</value>
+  </data>
+  <data name="MenuDec1_7" xml:space="preserve">
+    <value>King Prawns fried in Well-Seasoned Dough</value>
+  </data>
+  <data name="MenuDec1_7a" xml:space="preserve">
+    <value>Fish fried in spicy dough.</value>
+  </data>
+  <data name="MenuDec1_8" xml:space="preserve">
+    <value>Chicken thighs marinated In yogurt and tandoori in Spices, served with salad</value>
+  </data>
+  <data name="MenuDec2_1" xml:space="preserve">
+    <value>Mild Curry Soup With Chicken, Served With 1 Piece Naan Bread</value>
+  </data>
+  <data name="MenuDec2_2" xml:space="preserve">
+    <value>Vegetarian Soup With Lentils, Curry Sauce and Spices Served With 1 Piece Naan Bread</value>
+  </data>
+  <data name="MenuDec2_3" xml:space="preserve">
+    <value>Tomato Soup Mixed with Mild Spices Served With 1 Piece Naan Bread</value>
+  </data>
+  <data name="MenuDec3_1" xml:space="preserve">
+    <value>Cucumber, Lettuce, Cherry Tomato, Red Onion, Pepper, Sunflower Seeds, Carrots, Chilli Onion Chicken with Lime Baked Tandoori</value>
+  </data>
+  <data name="MenuDec3_2" xml:space="preserve">
+    <value>Cucumber, Salad, Cherry Tomato, Red Onion, Pepper, Sunflower Seeds, Carrot, Olive, Chilli Onion and Lime with Homemade Cottage Cheese</value>
+  </data>
+  <data name="MenuDec4_1" xml:space="preserve">
+    <value>Yogurt with cucumber, tomatoes, potatoes with fresh coriander leaves</value>
+  </data>
+  <data name="MenuDec4_2" xml:space="preserve">
+    <value>Indian Yogurt with Granulated Chickpeas</value>
+  </data>
+  <data name="MenuDec4_3" xml:space="preserve">
+    <value>Indian Fried Basmatirls, Peppers, Almonds, Raisins, Coconut and Indian Spices</value>
+  </data>
+  <data name="MenuDec6_1" xml:space="preserve">
+    <value>Mild Butter Chicken or Creamy Chicken with Rice</value>
+  </data>
+  <data name="MenuDec6_2" xml:space="preserve">
+    <value>Chicken Nuggets Served with French Fries and light Salad</value>
+  </data>
+  <data name="MenuDec6_3" xml:space="preserve">
+    <value>1. fish fillet with french fries.</value>
+  </data>
+  <data name="MenuDec9_1" xml:space="preserve">
+    <value>Dried spinach with fresh spices.</value>
+  </data>
+  <data name="MenuItem10" xml:space="preserve">
+    <value>Vegetarian - Vegetarian</value>
+  </data>
+  <data name="MenuItem10_1" xml:space="preserve">
+    <value>Butter Paneer</value>
+  </data>
+  <data name="MenuItem10_2" xml:space="preserve">
+    <value>Mix Daal</value>
+  </data>
+  <data name="MenuItem10_3" xml:space="preserve">
+    <value>Palak Paneer</value>
+  </data>
+  <data name="MenuItem10_4" xml:space="preserve">
+    <value>Mix Veg</value>
+  </data>
+  <data name="MenuItem10_5" xml:space="preserve">
+    <value>Aloofry Spicy</value>
+  </data>
+  <data name="MenuItem10_6" xml:space="preserve">
+    <value>Spinach Potatoes</value>
+  </data>
+  <data name="MenuItem10_7" xml:space="preserve">
+    <value>Allo Mutar</value>
+  </data>
+  <data name="MenuItem11" xml:space="preserve">
+    <value>The North Indian Special Dish</value>
+  </data>
+  <data name="MenuItem11_1" xml:space="preserve">
+    <value>Chicken Chilli</value>
+  </data>
+  <data name="MenuItem11_1a" xml:space="preserve">
+    <value>Lumb Chilli</value>
+  </data>
+  <data name="MenuItem11_2" xml:space="preserve">
+    <value>Cheese Chilli Veg</value>
+  </data>
+  <data name="MenuItem11_3" xml:space="preserve">
+    <value>Fish Curry</value>
+  </data>
+  <data name="MenuItem11_4" xml:space="preserve">
+    <value>Lamb Rogan Josh</value>
+  </data>
+  <data name="MenuItem11_5" xml:space="preserve">
+    <value>Lamb Korma Creamy</value>
+  </data>
+  <data name="MenuItem11_5a" xml:space="preserve">
+    <value>Chicken Korma Creamy</value>
+  </data>
+  <data name="MenuItem11_7" xml:space="preserve">
+    <value>Creamy Chicken</value>
+  </data>
+  <data name="MenuItem12" xml:space="preserve">
+    <value>Naan Bread</value>
+  </data>
+  <data name="MenuItem12_1" xml:space="preserve">
+    <value>Plain Naan</value>
+  </data>
+  <data name="MenuItem12_2" xml:space="preserve">
+    <value>Garlic Naan</value>
+  </data>
+  <data name="MenuItem12_3" xml:space="preserve">
+    <value>Butter Naan</value>
+  </data>
+  <data name="MenuItem12_4" xml:space="preserve">
+    <value>Chapati 2stk.</value>
+  </data>
+  <data name="MenuItem13" xml:space="preserve">
+    <value>Dessert</value>
+  </data>
+  <data name="MenuItem13_1" xml:space="preserve">
+    <value>Gulab Jamun</value>
+  </data>
+  <data name="MenuItem14" xml:space="preserve">
+    <value>Drinks</value>
+  </data>
+  <data name="MenuItem14_1" xml:space="preserve">
+    <value>Mango Juice</value>
+  </data>
+  <data name="MenuItem14_2" xml:space="preserve">
+    <value>Mango Lassi</value>
+  </data>
+  <data name="MenuItem14_3" xml:space="preserve">
+    <value>Aqua D´or Natural or citrus</value>
+  </data>
+  <data name="MenuItem14_4" xml:space="preserve">
+    <value>King Fisher (Indian beer)</value>
+  </data>
+  <data name="MenuItem14_5" xml:space="preserve">
+    <value>Cobra (Indian beer)</value>
+  </data>
+  <data name="MenuItem14_6" xml:space="preserve">
+    <value>House Red Wine / White Wine</value>
+  </data>
+  <data name="MenuItem14_7" xml:space="preserve">
+    <value>Alcohol-free Beer</value>
+  </data>
+  <data name="MenuItem14_8" xml:space="preserve">
+    <value>Ginger Beer</value>
+  </data>
+  <data name="MenuItem14_9" xml:space="preserve">
+    <value>Cola, Zero, Fanta, Faxe Kondi, Scweppes lemon</value>
+  </data>
+  <data name="MenuItem15" xml:space="preserve">
+    <value>Accessories</value>
+  </data>
+  <data name="MenuItem15_1" xml:space="preserve">
+    <value>Chutney Free choice</value>
+  </data>
+  <data name="MenuItem16" xml:space="preserve">
+    <value>Special Punjabi Thali Free Choice.</value>
+  </data>
+  <data name="MenuItem16_1" xml:space="preserve">
+    <value>Cholle Naan</value>
+  </data>
+  <data name="MenuItem16_2" xml:space="preserve">
+    <value>Cholle Poori</value>
+  </data>
+  <data name="MenuItem16_3" xml:space="preserve">
+    <value>Cholle Bhatura</value>
+  </data>
+  <data name="MenuItem17" xml:space="preserve">
+    <value>Lactose-free dishes</value>
+  </data>
+  <data name="MenuItem17_1" xml:space="preserve">
+    <value>These dishes can be obtained lactose-free with rice</value>
+  </data>
+  <data name="MenuItem18" xml:space="preserve">
+    <value>All Biryani</value>
+  </data>
+  <data name="MenuItem18_1" xml:space="preserve">
+    <value>Vegetarian Biryani</value>
+  </data>
+  <data name="MenuItem18_2" xml:space="preserve">
+    <value>Chicken Biryani</value>
+  </data>
+  <data name="MenuItem18_3" xml:space="preserve">
+    <value>Lamb Biyani</value>
+  </data>
+  <data name="MenuItem18_4" xml:space="preserve">
+    <value>King Prawn Biryani</value>
+  </data>
+  <data name="MenuItem18_5" xml:space="preserve">
+    <value>North India Pulao</value>
+  </data>
+  <data name="MenuItem18_5a" xml:space="preserve">
+    <value>Veg Pulao</value>
+  </data>
+  <data name="MenuItem18_6" xml:space="preserve">
+    <value>Rice</value>
+  </data>
+  <data name="MenuItem1_1" xml:space="preserve">
+    <value>Starters with sauce</value>
+  </data>
+  <data name="MenuItem1_1a" xml:space="preserve">
+    <value>Chips</value>
+  </data>
+  <data name="MenuItem1_2" xml:space="preserve">
+    <value>Papadum</value>
+  </data>
+  <data name="MenuItem1_3" xml:space="preserve">
+    <value>Veg Samosa</value>
+  </data>
+  <data name="MenuItem1_4" xml:space="preserve">
+    <value>Chicken Samosa</value>
+  </data>
+  <data name="MenuItem1_5" xml:space="preserve">
+    <value>Onion Bhaji(Pakora)</value>
+  </data>
+  <data name="MenuItem1_5a" xml:space="preserve">
+    <value>Potatoes (Pakora)</value>
+  </data>
+  <data name="MenuItem1_6" xml:space="preserve">
+    <value>Chicken Pakora</value>
+  </data>
+  <data name="MenuItem1_7" xml:space="preserve">
+    <value>King Prawn Pakora</value>
+  </data>
+  <data name="MenuItem1_7a" xml:space="preserve">
+    <value>Fish Pakora</value>
+  </data>
+  <data name="MenuItem1_8" xml:space="preserve">
+    <value>Tandoori Chicken</value>
+  </data>
+  <data name="MenuItem2" xml:space="preserve">
+    <value>Soup</value>
+  </data>
+  <data name="MenuItem2_1" xml:space="preserve">
+    <value>Chicken Soup</value>
+  </data>
+  <data name="MenuItem2_2" xml:space="preserve">
+    <value>Daal Soup (Lentils)</value>
+  </data>
+  <data name="MenuItem2_3" xml:space="preserve">
+    <value>Tomato Soup</value>
+  </data>
+  <data name="MenuItem3" xml:space="preserve">
+    <value>Salads</value>
+  </data>
+  <data name="MenuItem3_1" xml:space="preserve">
+    <value>The North Indian Salad</value>
+  </data>
+  <data name="MenuItem3_2" xml:space="preserve">
+    <value>Veg Cheese Salad</value>
+  </data>
+  <data name="MenuItem4" xml:space="preserve">
+    <value>Yogurt</value>
+  </data>
+  <data name="MenuItem4_1" xml:space="preserve">
+    <value>Raita (Yogurt)</value>
+  </data>
+  <data name="MenuItem4_2" xml:space="preserve">
+    <value>Boondi Raita</value>
+  </data>
+  <data name="MenuItem4_3" xml:space="preserve">
+    <value>Biryani including Boondi Raita</value>
+  </data>
+  <data name="MenuItem5" xml:space="preserve">
+    <value>Butter Dishes</value>
+  </data>
+  <data name="MenuItem5_1" xml:space="preserve">
+    <value>Butter Chicken</value>
+  </data>
+  <data name="MenuItem5_2" xml:space="preserve">
+    <value>Butter Beef</value>
+  </data>
+  <data name="MenuItem5_3" xml:space="preserve">
+    <value>Butter Lam</value>
+  </data>
+  <data name="MenuItem5_4" xml:space="preserve">
+    <value>Butter King Prawn</value>
+  </data>
+  <data name="MenuItem6_1" xml:space="preserve">
+    <value>Children''s menu</value>
+  </data>
+  <data name="MenuItem6_2" xml:space="preserve">
+    <value>Nuggets and Fries</value>
+  </data>
+  <data name="MenuItem6_3" xml:space="preserve">
+    <value>Fish fillet and fries</value>
+  </data>
+  <data name="MenuItem7" xml:space="preserve">
+    <value>Curry Dishes</value>
+  </data>
+  <data name="MenuItem7_1" xml:space="preserve">
+    <value>Chicken Curry</value>
+  </data>
+  <data name="MenuItem7_2" xml:space="preserve">
+    <value>Beef Curry</value>
+  </data>
+  <data name="MenuItem7_3" xml:space="preserve">
+    <value>Lamb Curry</value>
+  </data>
+  <data name="MenuItem7_4" xml:space="preserve">
+    <value>King Prawn</value>
+  </data>
+  <data name="MenuItem7_4a" xml:space="preserve">
+    <value>Fish Carry</value>
+  </data>
+  <data name="MenuItem8" xml:space="preserve">
+    <value>Tikka Masala Dishes</value>
+  </data>
+  <data name="MenuItem8_1" xml:space="preserve">
+    <value>Chicken Tikka Masala</value>
+  </data>
+  <data name="MenuItem8_2" xml:space="preserve">
+    <value>Beef Tikka Masala</value>
+  </data>
+  <data name="MenuItem8_3" xml:space="preserve">
+    <value>Lamb Tikka Masala</value>
+  </data>
+  <data name="MenuItem8_4" xml:space="preserve">
+    <value>King Prawn Tikka Masala</value>
+  </data>
+  <data name="MenuItem9" xml:space="preserve">
+    <value>Spinach (Palak) Dishes</value>
+  </data>
+  <data name="MenuItem9_1" xml:space="preserve">
+    <value>Spinach (Palak) chicken</value>
+  </data>
+  <data name="MenuItem9_2" xml:space="preserve">
+    <value>Spinach Ox</value>
+  </data>
+  <data name="MenuItem9_3" xml:space="preserve">
+    <value>Spinach (Palak) lamb</value>
+  </data>
+  <data name="MenuItem9_4" xml:space="preserve">
+    <value>Spinach (Palak) King Prawn</value>
+  </data>
+  <data name="MenuQuantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+</root>

@@ -1,0 +1,129 @@
+﻿@model RestaurantMVC.Models.ContactModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+<style>
+    .input-validation-error {
+        border: 1px solid #ff0000 !important;
+    }
+</style>
+
+<section id="mu-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-contact-area">
+                    <div class="mu-title">
+                        <span class="mu-subtitle">@RestaurantMVC.Resources.Home.Contact</span>
+                        <h2>@RestaurantMVC.Resources.Home.Contact1</h2>
+
+
+                        @if (ViewBag.IsMsgDisplay == "Y")
+                        {
+                            <div id="wrap_Cookie" class="pshow" style="display:block">
+
+                                <header role="banner" id="banner" class="Masthead" style="background-color:persion green;">
+                                    <!-- Start Sticky Banner -->
+
+
+                                    <div class="Message-sticky Message--animate" style="background-color:persion green;margin-top: 0px !important;">
+                                        <br />
+                                        <b>
+                                            <a style="color:black;">
+                                                <span class="marketstrip" style="font-weight:bold;">
+                                                    <font color="#ffffff" face="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"><span style="font-size: 15px;font-family:National-Book,Helvetica,sans-serif">@ViewBag.displaymsg</span></font><br>
+                                                </span>
+                                            </a>
+                                        </b>
+
+                                    </div>
+                                </header>
+                            </div>
+                        }
+                    </div>
+                            <div class="mu-contact-content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mu-contact-left">
+                                            <div class="col-md-12">
+                                                <div id="errormessage" style="display:none">
+                                                    <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+                                                </div>
+                                                @if (ViewBag.Message != "")
+                                                {
+                                                    <div id="message">
+                                                        <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                                                    </div>
+                                                }
+                                                @if (ViewBag.MessageErr != "")
+                                                {
+                                                    <div id="message">
+                                                        <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <!-- Email message div -->
+                                            <div id="form-messages"></div>
+                                            <!-- Start contact form -->
+                                            @using (Html.BeginForm("Create", "Contact", FormMethod.Post, new { @class = "mu-contact-form" }))
+                                            {
+                                                @*<form id="ajax-contact" method="post" action="mailer.php" class="mu-contact-form">*@
+                                                <div class="form-group">
+                                                    <label for="name">@RestaurantMVC.Resources.Home.ContactName</label>
+                                                    @Html.EditorFor(m => m.Name, new { htmlAttributes = new { id = "txtname", placeholder = "Name", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">@RestaurantMVC.Resources.Home.ContactEmail</label>
+                                                    @Html.EditorFor(m => m.Email, new { htmlAttributes = new { id = "txtemail", placeholder = "Email", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="subject">@RestaurantMVC.Resources.Home.ContactSub</label>
+                                                    @Html.EditorFor(m => m.Subject, new { htmlAttributes = new { id = "txtsubject", placeholder = "Subject", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message">@RestaurantMVC.Resources.Home.ContactMsg</label>
+                                                    @Html.TextAreaFor(m => m.Message, new { htmlAttributes = new { rows = 10, columns = 40, placeholder = "Type Your Message", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+                                                    @*<textarea class="form-control" id="message" name="message" cols="30" rows="10" placeholder="Type Your Message" required></textarea>*@
+                                                </div>
+                                                <button type="submit" class="mu-send-btn" onclick="location.href='@Url.Action("Create", "Contact")'">@RestaurantMVC.Resources.Home.SendMsgBtn</button>
+                                                @*</form>*@
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mu-contact-right">
+                                            <div class="mu-contact-widget">
+                                                <h3>@RestaurantMVC.Resources.Home.ContactAddress</h3>
+                                                @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia temporibus corporis ea non consequatur porro corrupti hic voluptatibus assumenda, doloribus.</p>*@
+                                                <address>
+                                                    <p><i class="fa fa-phone"></i> 0045-35117000</p>
+                                                    <p><i class="fa fa-envelope-o"></i>morfar1313@gmail.com</p>
+                                                    <p><i class="fa fa-map-marker"></i> Rungstedvej 7, 2970 H�rsholm, Denmark</p>
+                                                </address>
+                                            </div>
+                                            <div class="mu-contact-widget">
+                                                <h3>@RestaurantMVC.Resources.Home.OpenHours</h3>
+                                                <address>
+                                                    <p><span style="min-width:170px">@RestaurantMVC.Resources.Home.lblMonday</span> 16.00 to 21.30 </p>
+                                                    <p><span style="min-width:170px">@RestaurantMVC.Resources.Home.lblWeekOff</span> </p>
+                                                    <p><span style="min-width:170px">@RestaurantMVC.Resources.Home.lblweekday</span> 16.00 to 21.30 </p>
+                                                    <p><span style="min-width:170px">@RestaurantMVC.Resources.Home.lblSaturday</span> 15.00 to 21:30</p>
+                                                    <p><span style="min-width:170px">@RestaurantMVC.Resources.Home.lblSunday</span> 16.00 to 20:30</p>
+                                                </address>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+

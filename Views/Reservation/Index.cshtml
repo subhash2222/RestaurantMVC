@@ -1,0 +1,290 @@
+﻿@model RestaurantMVC.Models.Reservation
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Reservation";
+}
+
+@*<link href="~/Content/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />*@
+<link href="~/Content/assets/Datatimecss/bootstrap-datetimepicker.css" rel="stylesheet" />
+<link href="~/Content/assets/Datatimecss/bootstrap.min.css" rel="stylesheet" />
+<style>
+    .input-validation-error {
+        border: 1px solid #ff0000 !important;
+        /*background-color: #FF0000;*/
+    }
+</style>
+<section id="mu-reservation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-reservation-area">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="mu-title">
+                        <span class="mu-subtitle">@RestaurantMVC.Resources.Home.Rev</span>
+                        <h2>@RestaurantMVC.Resources.Home.MenuReser</h2>
+                        @*<h2><span>@RestaurantMVC.Resources.Home.MenuAbout</span></h2>*@
+                    </div>
+                    <div class="mu-reservation-content">
+                        @*<p style="color: black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quidem autem iusto, perspiciatis, amet, quaerat blanditiis ducimus eius recusandae nisi aut totam alias consectetur et.</p>*@
+
+                        <div class="col-md-6">
+                            <div class="mu-reservation-left">
+                                <div class="col-md-12">
+                                    <div id="errormessage" style="display:none">
+                                        <center><p style="font-weight:bold;color:red;"><label id="lblerrormessage">@ViewBag.Message</label></p> </center>
+                                    </div>
+                                    @if (ViewBag.Message != "")
+                                    {
+                                        <div id="message">
+                                            <center><p style="font-weight:bold;color:green;">@ViewBag.Message</p> </center>
+                                        </div>
+                                    }
+                                    @if (ViewBag.MessageErr != "")
+                                    {
+                                        <div id="message">
+                                            <center><p style="font-weight:bold;color:red;">@ViewBag.MessageErr</p> </center>
+                                        </div>
+                                    }
+                                </div>
+                                @using (Html.BeginForm("Create", "Reservation", FormMethod.Post, new { @class = "mu-reservation-form" }))
+                                {
+                                    @*<form class="mu-reservation-form" method="post">*@
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.EditorFor(m => m.reser.Name, new { htmlAttributes = new { id = "txtname", placeholder = "Your Name", @class = "form-control" } })
+                                                @*@Html.ValidationMessageFor(m => m.reser.Name, "", new { @class = "text-danger" })*@
+                                                @*@Html.TextBox("txtname", "Name", null, new { @class = "form-control" })*@
+                                                @*<input id="txtname" type="text" name="t1" class="form-control" placeholder="Full Name">*@
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.EditorFor(m => m.reser.Email, new { htmlAttributes = new { id = "txtemail", placeholder = "Email", @class = "form-control" } })
+                                                @*@Html.ValidationMessageFor(m => m.reser.Email, "", new { @class = "text-danger" })*@
+                                                @*@Html.TextBox("txtemail", "Email", null, new { @class = "form-control" })*@
+                                                @*<input type="email" class="form-control" placeholder="Email">*@
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.EditorFor(m => m.reser.Phone_No, new { htmlAttributes = new { id = "txtphn", placeholder = "Phone Number", @class = "form-control" } })
+                                                @*@Html.ValidationMessageFor(m => m.reser.Phone_No, "", new { @class = "text-danger" })*@
+                                                @*@Html.TextBox("txtphone", "Phone Number", null, new { @class = "form-control" })*@
+                                                @*<input type="text" class="form-control" placeholder="Phone Number" required>*@
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @{
+                                                    var person = new SelectList(new[]
+                                                    {
+                new SelectListItem { Text = "How Many", Value = "0", Selected = true },
+                new SelectListItem { Text = "1 Person", Value = "1"},
+                new SelectListItem { Text = "2 Person", Value = "2"},
+                new SelectListItem { Text = "3 Person", Value = "3"},
+                new SelectListItem { Text = "4 Person", Value = "4"},
+                new SelectListItem { Text = "5 Person", Value = "5"},
+                new SelectListItem { Text = "6 Person", Value = "6"},
+                new SelectListItem { Text = "7 Person", Value = "7"},
+                new SelectListItem { Text = "8 Person", Value = "8"},
+                new SelectListItem { Text = "9 Person", Value = "9"},
+                new SelectListItem { Text = "10 Person", Value = "10"},
+            }, "Value", "Text");
+                                                }
+                                                @Html.DropDownListFor(m => m.reser.No_of_Person, person, new { id = "ddlperson", @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.reser.No_of_Person, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @*<label for="dtp_input2" class="col-md-2 control-label">Date Picking</label>*@
+                                                <div id="dtpinput2" class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+
+                                                    @Html.TextBoxFor(m => m.reser.Reservation_Date, new { id = "txtdate", placeholder = "Select Date", @class = "form-control" })
+                                                    @*@Html.ValidationMessageFor(m => m.reser.Reservation_Date, "", new { @class = "text-danger" })*@
+                                                    @*<input class="form-control" size="16" type="text" value="">*@
+                                                    @*<input class="form-control" size="16" type="text" value="" readonly>*@
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                                </div>
+                                                <input type="hidden" id="dtp_input2" value="" /><br />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="col-sm-6" style="text-align:left">                                                    
+                                                    @Html.DropDownListFor(m => m.reser.Time, new SelectList(ViewBag.timeListsres, "Value", "Text"), new { id= "TransporteId1" , @style = "min-width:100px", @class = "form-control" })
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.EditorFor(m => m.reser.Message, new { htmlAttributes = new { placeholder = "Your Message", @class = "form-control" } }) @Html.ValidationMessageFor(m => m.reser.Message, "", new { @class = "text-danger" })
+
+                                                @*@Html.TextArea("Message", "Your Message", new { @class = "form-control" })*@
+                                                @*<textarea class="form-control" cols="30" rows="10" placeholder="Your Message"></textarea>*@
+                                            </div>
+                                        </div>
+                                        <button id="btn" type="submit" class="mu-readmore-btn" onclick="location.href='@Url.Action("Create", "Reservation")'">@RestaurantMVC.Resources.Home.ReservBtn</button>
+                                    </div>
+                                    @*</form>*@
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="mu-reservation-right">
+                                <div class="mu-opening-hour">
+                                    <h2>@RestaurantMVC.Resources.Home.OpenHours</h2>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <p>@RestaurantMVC.Resources.Home.lblMonday</p>
+                                            <p>16:00 - 21:30 </p>
+                                        </li>
+                                        <li>
+                                            <p>@RestaurantMVC.Resources.Home.lblWeekOff</p>
+                                        </li>
+                                        <li>
+                                            <p>@RestaurantMVC.Resources.Home.lblweekday</p>
+                                            <p>16:00 - 21:30 </p>
+                                        </li>
+                                        <li>
+                                            <p>@RestaurantMVC.Resources.Home.lblSaturday</p>
+                                            <p>15:00 - 21:30</p>
+                                        </li>
+                                        <li>
+                                            <p>@RestaurantMVC.Resources.Home.lblSunday</p>
+                                            <p>16:00 - 20:30</p>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Content/assets/bootstrap/js/bootstrap-datetimepicker.js"></script>
+
+@*<script type="text/javascript" src="~/Content/assets/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>*@
+@*<script src="http://code.jquery.com/jquery.min.js"></script>*@
+@*<script>
+       $( function () {
+            $("#btn").click(function () {
+                //alert('hii');
+                //$("#txtname").focusout(function () {
+                    //var txtval = $("input[name = 't1']").val();
+                    //if (txtval == '')
+                        //alert('textbox empty');
+                    //$("#txtname").focus();
+                if ($('#txtname').val() == '') {
+                    $("#txtname").css("border-color", "red");
+                }
+                //$("#txtemail").focus();
+                $("#txtemail").css("border-color", "red");
+
+                //$("#txtphn").focus();
+                $("#txtphn").css("border-color", "red");
+
+                //$("#ddlperson").focus();
+                $("#ddlperson").css("border-color", "red");
+
+                //$("#txtdate").focus();
+                $("#txtdate").css("border-color", "red");
+
+                //$("#txttime").focus();
+                $("#txttime").css("border-color", "red");
+
+                //});
+            });
+        })
+
+    </script>*@
+@*<script type="text/javascript">
+
+    $("#btn").click(function () {
+        if ($("#txtname").val() == "") {
+            $("#txtname").css("border-color", "red");
+            //alert("There is no value in textbox");
+        }
+
+
+    });*@
+@*function validateEmail(emailField) {
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField) == false) {
+            alert('Invalid Email Address');
+            return false;
+        }
+        return true;
+    }*@
+
+
+@*</script>*@
+<script type="text/javascript">
+
+    $("#txtdate").change(function () {
+
+        var filters = {
+            dates: $("#txtdate").val()
+        };
+
+            $.ajax({
+                url: "/Reservation/Gettime",
+                type: 'POST',
+                cache: false,
+                async: true,
+                dataType: "html",
+                data: filters
+            })
+                .done(function (data) {
+                    var strHtml = ""
+                    $.each(jQuery.parseJSON(data), function (index, Module) {
+                        strHtml += "<option value=" + Module.Value + ">" + Module.Text + "</option>"
+                    })
+                    $("#TransporteId1").html(strHtml);
+                }).fail(function (xhr) {
+                    console.log('error : ' + xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+                });
+
+        })
+
+    $('.form_date').datetimepicker({
+        language: 'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language: 'fr',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+
+    function Requestsuccess() {
+        Swal.fire(
+            'Your request has been placed successfully',
+            '',
+            'success'
+        )
+    }
+</script>

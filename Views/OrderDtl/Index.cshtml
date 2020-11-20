@@ -1,0 +1,302 @@
+﻿@model RestaurantMVC.Models.ViewOrderModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #tblJob4, #tblJob4 th, #tblJob4 td {
+        border: 1px solid #D9D9D9;
+    }
+
+        #tblJob4 tbody tr:first-child {
+            background-color: #D9D9D9;
+        }
+</style>
+
+<link href="~/Content/assets/bootstrap/css/tablecss.css?v=0.0.1" rel="stylesheet" />
+<div class="container" style="margin-top:140px;">
+    <h1>Order List</h1>
+    <ul class="nav nav-tabs">
+        @*<li class="active"><a href="#table1">Home</a></li>
+            <li><a href="#table2">Menu 1</a></li>*@
+        <li class="pending"><a onclick="location.href='@Url.Action("Index", "OrderDtl")'">Pending  @*<i class="fa fa-ellipsis-h" style="color: dodgerblue"></i>*@</a></li>
+        <li class="inkitchen"><a onclick="location.href='@Url.Action("Inkitchen", "OrderDtl")'">In Kitchen</a></li>
+        <li class="ready"><a onclick="location.href='@Url.Action("Ready", "OrderDtl")'">Ready</a></li>
+        <li class="completed"><a onclick="location.href='@Url.Action("Completed", "OrderDtl")'">Delivered</a></li>
+        <li class="all"><a onclick="location.href='@Url.Action("All", "OrderDtl")'">All</a></li>
+
+        @*<li>
+            <a onclick="location.href='@Url.Action("ShowNotification", "OrderDtl")'">
+                <span id="group">
+                    <button type="button" class="btn btn-info">
+                        <i class="fa fa-bell-o fa_custom"></i>
+                        <span class="badge badge-light" id="notificationcount" style="color:orangered">@Model.Notificationcount</span>
+                    </button>
+
+                </span>
+            </a>
+        </li>*@
+    </ul>
+    <br>
+    <div class="tab-content">
+        <table class="rwd-table tab-pane fade in active" id="table1">
+            <tbody>
+                <tr>
+                    <th>Order No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Order Type</th>
+                    <th>Estimated Time</th>
+                    <th>Payment Mode</th>
+                    <th>Status</th>
+                    <th>Net Amount</th>
+
+                </tr>
+
+                @foreach (var item in Model.ListorderModelP)
+                {
+            <tr>
+                <td data-th="Order No">
+                    @Html.DisplayFor(modelItem => item.Order_Id, new { htmlAttributes = new { @id = "lblitem" + item.Order_Id, onclick = "Onqtychange(" + item.Order_Id + ")" } })
+                    <a onclick="Savepickup(@item.Order_Id)"> <i class="fa fa-eye fa-fw" style="color:orangered"></i></a>
+                </td>
+                <td data-th="First Name">
+                    @Html.DisplayFor(modelItem => item.First_Name)
+                </td>
+                <td data-th="Last Name">
+                    @Html.DisplayFor(modelItem => item.Last_Name)
+                </td>
+                <td data-th="Order Type">
+                    @Html.DisplayFor(modelItem => item.Order_Type)
+                </td>
+                <td data-th="Estimated Time">
+                    @Html.DisplayFor(modelItem => item.EstimatedTime)
+                </td>
+                <td data-th="Payment Mode">
+                    @Html.DisplayFor(modelItem => item.Payment_Mode)
+                </td>
+                <td data-th="Status">
+
+                    @Html.DropDownListFor(model => model.orderModel.Status,
+         new SelectList(Model.ListLovModel, "Lov_Code", "Lov_Desc", @item.Status), new { @id = "ddl" + @item.Order_Id })
+                    <a onclick="Showstatus(@item.Order_Id)"> <i class="fa fa-edit fa-fw" style="color:orangered"></i></a>
+                </td>
+                <td data-th="Net Amount">
+                    @Html.DisplayFor(modelItem => item.Order_Amt)
+                </td>
+
+
+            </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">Order Item List</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="margin-top: 20px;" id="btnviewbatchcodetable">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="myModalstatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">Update Order Status</h4>
+                </div>  @using (Html.BeginForm("Submitorderstatus", "OrderDtl", FormMethod.Post))
+                {
+                    <div class="modal-body" style="padding:30px;">
+
+                        <table>
+                            @Html.HiddenFor(model => model.orderModel.Order_Id)
+                            @Html.HiddenFor(model => model.Status)
+                            <tr><td>Order No :</td><td style="color:dodgerblue" id="orderno"></td></tr>
+                            <tr>
+                                <td>Status :</td>
+                                <td>
+                                    @Html.DropDownListFor(model => model.orderModel.Status,
+                         new SelectList(Model.ListLovModel, "Lov_Code", "Lov_Desc"))
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Submit" id="submit" class="btn btn-primary save" onclick="location.href='@Url.Action("Submitorderstatus", "OrderDtl")'" />
+                    </div>
+                }
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>
+
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //var ststus = $("#Status").val();
+
+        //if (ststus == "Pending") {
+        //    $(".pending").addClass("active");
+        //}
+        //else if (ststus == "Completed")
+        //{
+        //    $(".completed").addClass("active");
+        //}
+        //else if (ststus == "All") {
+        //    $(".all").addClass("active");
+        //}
+        //else if (ststus == "Inkitchen") {
+        //    $(".inkitchen").addClass("active");
+        //}
+        //else if (ststus == "Ready") {
+        //    $(".ready").addClass("active");
+        //}
+
+
+        @*setInterval(() => {
+                 var myObj = {};
+         $.ajax({
+                type: "POST",
+                url: '@Url.Action("Getnotificationcount", "OrderDtl")',
+                data: myObj,
+
+             success: function (result) {
+
+                 $('#notificationcount').text('');
+                 var data2 = result.Notificationcount;
+                 $('#notificationcount').text(data2);
+
+                },
+                error: function () {
+                alert("error");
+                }
+                });
+        }, 60000);*@
+
+        setInterval(() => {
+            var serviceUrl = "/OrderDtl/Index";
+            window.location.href = serviceUrl;
+
+         @*$.ajax({
+                type: "POST",
+                url: '@Url.Action("Index", "OrderDtl")',
+                data: myObj,
+             success: function (result) {
+
+                 //$('#notificationcount').text('');
+                 //var data2 = result.Notificationcount;
+                 //$('#notificationcount').text(data2);
+                },
+                error: function () {
+                alert("error");
+                }
+                });*@
+        }, 30000);
+
+        var ststus = $("#Status").val();
+
+        //alert(ststus);
+        if (ststus == "Pending") {
+            $(".pending").addClass("active");
+        }
+        else if (ststus == "Completed")
+        {
+            $(".completed").addClass("active");
+        }
+        else if (ststus == "All") {
+            $(".all").addClass("active");
+        }
+        else if (ststus == "Inkitchen") {
+            $(".inkitchen").addClass("active");
+        }
+        else if (ststus == "Ready") {
+            $(".ready").addClass("active");
+        }
+
+            //$(".nav-tabs a").click(function () {
+            //    $(this).tab('show');
+            //});
+        });
+        function Showstatus(orderids)
+        {
+
+            var itemlbl = '#ddl'.concat(orderids);
+            var status = $(itemlbl).val();
+            var tabstatus = $("#Status").val();
+
+
+            var myObj = { orderids: orderids, status: status, tabstatus: tabstatus};
+         $.ajax({
+                type: "POST",
+                url: '@Url.Action("Submitorderstatus", "OrderDtl")',
+                data: myObj,
+
+             success: function (result) {
+                 //debugger;
+
+                 var url = "/OrderDtl" + '/' + result.Status;
+                 window.location.href = url;
+
+                },
+                error: function () {
+                alert("error");
+                }
+                });
+            //$("#orderno").text('');
+            //$("#orderModel_Order_Id").val('');
+            //$("#orderno").text(orderids);
+            //$("#orderModel_Order_Id").val(orderids);
+            //$("#myModalstatus").modal('show');
+        }
+
+
+        function Savepickup(orderids) {
+
+            var myObj = {orderid: orderids};
+         $.ajax({
+                type: "POST",
+                url: '@Url.Action("Getitemlist", "OrderDtl")',
+                data: myObj,
+
+             success: function (result) {
+
+                 $('#btnviewbatchcodetable').text('');
+                 var data2 = result.ListOrderItemModel;
+
+                 var nextTabhtml = '<table class="rwd-table tab-pane"><tr><th>Item Name</th><th>Qty</th></tr>'
+                 for (var i = 0; i < data2.length; i++) {
+
+                     nextTabhtml += '<tr><td data-th="Item Name">' + data2[i].Item_Name + '</td><td data-th="Qty">' + data2[i].Qty + '</td>';
+                 }
+                 nextTabhtml += '</table>';
+                 $('#btnviewbatchcodetable').append(nextTabhtml);
+
+                 $("#myModal").modal('show')
+                },
+                error: function () {
+                alert("error");
+                }
+                });
+        }
+</script>
+
+
